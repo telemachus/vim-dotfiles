@@ -12,13 +12,22 @@ Below is a short listing of what's here with credit to original authors.
 + [blackboard](http://www.vim.org/scripts/script.php?script_id=2280) by Ben Wyrosdick
 + [ir_black](http://blog.infinitered.com/entries/show/8) by Todd Werth
 + [jellybeans](http://www.vim.org/scripts/script.php?script_id=2555) by NanoTech
++ [moria](http://www.vim.org/scripts/script.php?script_id=1464) by Georg Dahn
++ [wombat](http://www.vim.org/scripts/script.php?script_id=1778) by Lars Nielsen
++ [fnaqevan](http://www.vim.org/scripts/script.php?script_id=469) by Rafal Sulejman
++ [potts](http://www.vim.org/scripts/script.php?script_id=285) by Douglas Potts
++ [twilight](http://www.vim.org/scripts/script.php?script_id=1677) by Henning Hasemann
++ [vibrantink](http://www.vim.org/scripts/script.php?script_id=1794) by Jo Vermeulen
 
-## Filetypes
+## Filetypes, syntax, markup
 
 + [taskpaper](http://www.vim.org/scripts/script.php?script_id=2027) by David O'Callaghan
 + [mustache](http://github.com/juvenn/mustache.vim) by Juvenn Woo
 + [json](http://www.vim.org/scripts/script.php?script_id=1945) by Jeroen Ruigrok van der Werven
++ [jquery](http://www.vim.org/scripts/script.php?script_id=2416) by Bruno Michel
 
 ## Various
 
++ [IndexedSearch](http://www.vim.org/scripts/script.php?script_id=1682) by Yakov Lerner (adds a count message for searches)
++ [gist](http://www.vim.org/scripts/script.php?script_id=2423) by Yasuhiro Matsumoto (adds support for gists directly in Vim)
 + [closetag](http://www.vim.org/scripts/script.php?script_id=13) by Steven Mueller (helps with HTML and XML files)
