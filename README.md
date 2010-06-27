@@ -2,7 +2,7 @@
 
 I recently discovered [pathogen.vim](http://github.com/tpope/vim-pathogen) by Tim Pope in a [post about it by Tammer Saleh](http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen). It's great. I want to use it for everything.
 
-Sadly, lots of Vim scripts, plugins and colors are in every other format in the world. So, this is my short-term (?) solution. I've bundled up a Pathogen-friendly repo with a bunch of my favorite items. Feel free to use it in a gist [like this one](). (It's inspired by a short Ruby script Tammer put in his post about Pathogen.)
+Sadly, lots of Vim scripts, plugins and colors are in every other format in the world. So, this is my short-term (?) solution. I've bundled up a Pathogen-friendly repo with a bunch of my favorite items. Feel free to use it in a gist [like this one](http://gist.github.com/455162). (It's inspired by a short Ruby script Tammer put in his post about Pathogen.)
 
 Below is a short listing of what's here with credit to original authors.
 
