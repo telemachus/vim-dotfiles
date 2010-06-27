@@ -31,3 +31,7 @@ Below is a short listing of what's here with credit to original authors.
 + [IndexedSearch](http://www.vim.org/scripts/script.php?script_id=1682) by Yakov Lerner (adds a count message for searches)
 + [gist](http://www.vim.org/scripts/script.php?script_id=2423) by Yasuhiro Matsumoto (adds support for gists directly in Vim)
 + [closetag](http://www.vim.org/scripts/script.php?script_id=13) by Steven Mueller (helps with HTML and XML files)
+
+## License
+
+Individual items carry their own license (or not). See the packages or their homepages for more detail. 
