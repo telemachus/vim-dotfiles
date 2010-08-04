@@ -33,3 +33,9 @@ Roman Gonzalez
 + [IndexedSearch](http://www.vim.org/scripts/script.php?script_id=1682) by Yakov Lerner (adds a count message for searches)
 + [gist](http://www.vim.org/scripts/script.php?script_id=2423) by Yasuhiro Matsumoto (adds support for gists directly in Vim)
 + [closetag](http://www.vim.org/scripts/script.php?script_id=13) by Steven Mueller (helps with HTML and XML files)
+
+## After
+
+I've started using after/ as a way of loading small adaptations to existing
+filetype or syntax settings. There's lots in there, so poke around for
+details.
