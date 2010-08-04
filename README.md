@@ -15,9 +15,11 @@ Below is a short listing of what's here with credit to original authors.
 + [moria](http://www.vim.org/scripts/script.php?script_id=1464) by Georg Dahn
 + [wombat](http://www.vim.org/scripts/script.php?script_id=1778) by Lars Nielsen
 + [fnaqevan](http://www.vim.org/scripts/script.php?script_id=469) by Rafal Sulejman
-+ [potts](http://www.vim.org/scripts/script.php?script_id=285) by Douglas Potts
 + [twilight](http://www.vim.org/scripts/script.php?script_id=1677) by Henning Hasemann
 + [vibrantink](http://www.vim.org/scripts/script.php?script_id=1794) by Jo Vermeulen
++ bespin, based on TextMate's theme and adapted via [coloration](http://github.com/sickill/coloration)
++ [sunburst](http://blog.romanandreg.com/post/160800533/my-crush-on-vim) by
+Roman Gonzalez
 
 ## Filetypes, syntax, markup
 
