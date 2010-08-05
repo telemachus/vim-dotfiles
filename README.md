@@ -43,3 +43,7 @@ that aren't otherwise covered.
 I've started using after/ as a way of loading small adaptations to existing
 filetype or syntax settings. There's lots in there, so poke around for
 details.
+
+## License
+
+Individual items carry their own license (or not). See the packages or their homepages for more detail. 
