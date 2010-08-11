@@ -3,7 +3,7 @@
 setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal expandtab shiftround smarttab number wrap linebreak
-"setlocal fo=tcroql
+setlocal fo=tcroql
 setlocal showmatch
 setlocal matchpairs+=<:>
 let perl_fold=1
