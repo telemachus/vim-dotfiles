@@ -19,6 +19,7 @@ Below is a short listing of what's here with credit to original authors.
 + [vibrantink](http://www.vim.org/scripts/script.php?script_id=1794) by Jo Vermeulen
 + bespin, based on TextMate's theme and adapted via [coloration](http://github.com/sickill/coloration)
 + [sunburst](http://blog.romanandreg.com/post/160800533/my-crush-on-vim) by
++ [molokai](http://www.vim.org/scripts/script.php?script_id=2340)
 Roman Gonzalez
 
 ## Filetypes, syntax, markup
@@ -27,16 +28,18 @@ Roman Gonzalez
 + [mustache](http://github.com/juvenn/mustache.vim) by Juvenn Woo
 + [json](http://www.vim.org/scripts/script.php?script_id=1945) by Jeroen Ruigrok van der Werven
 + [jquery](http://www.vim.org/scripts/script.php?script_id=2416) by Bruno Michel
++ ruby (see below on [ruby-matchit.vim](http://www.vim.org/scripts/script.php?script_id=290))
 
 ## Various
 
 + [IndexedSearch](http://www.vim.org/scripts/script.php?script_id=1682) by Yakov Lerner (adds a count message for searches)
 + [gist](http://www.vim.org/scripts/script.php?script_id=2423) by Yasuhiro Matsumoto (adds support for gists directly in Vim)
 + [closetag](http://www.vim.org/scripts/script.php?script_id=13) by Steven Mueller (helps with HTML and XML files)
-+ [rvm](http://github.com/telemachus/rvm.vim) by Chris Sexton
 + [ruby-matchit.vim](http://www.vim.org/scripts/script.php?script_id=290)
 by JoHannes Tanzler. Allow `%` to bounce between various blocks in Ruby
-that aren't otherwise covered.
+that aren't otherwise covered. (The code from this is sourced currently in
+ftplugin/ruby.vim. I realize now that the default Ruby files may already
+have this functionality. I need to check for that.)
 
 ## After
 
