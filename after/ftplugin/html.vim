@@ -2,3 +2,5 @@
 let b:closetag_html_style=1
 source ~/.vim/bundle/vim-varia/plugin/closetag.vim
 set autoindent nosmartindent nocindent
+set softtabstop=2
+set shiftwidth=2
