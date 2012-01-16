@@ -1,7 +1,4 @@
 setlocal makeprg=jslint\ %
 setlocal errorformat=%-P%f,
-                    \%-G/*jslint\ %.%#*/,
-                    \%*[\ ]%n\ %l\\,%c:\ %m,
-                    \%-G\ \ \ \ %.%#,
-                    \%-GNo\ errors\ found.,
-                    \%-Q
+                    \%E%>\ #%n\ %m,%Z%.%#Line\ %l\\,\ Pos\ %c,
+                    \%-G%f\ is\ OK.,%-Q
