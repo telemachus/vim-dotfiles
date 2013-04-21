@@ -4,7 +4,7 @@
 let b:AutoPairs = {'(':')', '[':']', '{':'}'}
 
 " Set make to build and open the pdf
-set makeprg=xelatex\ %\ &&\ open\ %:r.pdf
+set makeprg=latexmk\ -xelatex\ -bibtex\ %\ &&\ open\ %:r.pdf
 " }}}
 
 " Automatically swap `` for " and ` for ' {{{
