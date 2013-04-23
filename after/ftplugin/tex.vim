@@ -53,3 +53,10 @@ set conceallevel=2
 " quotes look different from closing quotes and from their surroundings.
 hi clear Conceal
 " }}}
+
+" Add Natbib syntax highlighting {{{
+syn match texRefZone '\\citeasnoun\%([tp]\*\=\)\='
+            \ nextgroup=texRefOption,texCite
+syn match texRefZone '\\citeal\%([tp]\*\=\)\='
+            \ nextgroup=texRefOption,texCite
+" }}}
