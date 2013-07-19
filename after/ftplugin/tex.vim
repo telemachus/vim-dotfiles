@@ -5,7 +5,24 @@ let b:AutoPairs = {'(':')', '[':']', '{':'}'}
 
 " Set make to build and open the pdf
 set makeprg=latexmk\ -xelatex\ -bibtex\ %\ &&\ open\ %:r.pdf
+
+" Softwrap
+setlocal tw=0 wrap linebreak nolist
 " }}}
+
+" Remap motion keys for softwrapped lines {{{
+nnoremap <C-k> gk
+nnoremap <C-j> gj
+nnoremap <C-0> g0
+nnoremap <C-^> g^
+nnoremap <C-$> g$
+vnoremap <C-k> gk
+vnoremap <C-j> gj
+vnoremap <C-0> g0
+vnoremap <C-^> g^
+vnoremap <C-$> g$
+"  }}}
+
 
 " Automatically swap `` for " and ` for ' {{{
 " The TexQuotes method is taken wholesale from auctex.vim.
@@ -18,9 +35,9 @@ function! s:TexQuotes()
     let insert = '"'
     let left = getline('.')[col('.')-2]
     if left =~ '^\(\|\s\)$'
-	let insert = '``'
+        let insert = '``'
     elseif left == '\'
-	let insert = '"'
+        let insert = '"'
     endif
     return insert
 endfunction
@@ -29,9 +46,9 @@ function! s:TexQuote()
     let insert = "'"
     let left = getline('.')[col('.')-2]
     if left =~ '^\(\|\s\)$'
-	let insert = '`'
+        let insert = '`'
     elseif left == '\'
-	let insert = "'"
+        let insert = "'"
     endif
     return insert
 endfunction
@@ -58,5 +75,9 @@ hi clear Conceal
 syn match texRefZone '\\citeasnoun\%([tp]\*\=\)\='
             \ nextgroup=texRefOption,texCite
 syn match texRefZone '\\citeal\%([tp]\*\=\)\='
+            \ nextgroup=texRefOption,texCite
+syn match texRefZone '\\citeyearpar\%(\*\=\)\='
+            \ nextgroup=texRefOption,texCite
+syn match texRefZone '\\citeauthor\%(\*\=\)\='
             \ nextgroup=texRefOption,texCite
 " }}}
