@@ -1,7 +1,7 @@
 " Basic settings {{{
 " Restrict the characters that AutoPairs works on. In a nutshell, don't
 " work on single quotes.
-let b:AutoPairs = {'(':')', '[':']', '{':'}', '"': '"'}
+let b:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"'}
 " }}}
 
 " Highlight additional Chicken keywords {{{
