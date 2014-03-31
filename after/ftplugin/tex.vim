@@ -1,7 +1,7 @@
 " Basic settings {{{
 " Restrict the characters that AutoPairs works on. In a nutshell, don't
 " work on single or double quotes.
-let b:AutoPairs = {'(':')', '[':']', '{':'}'}
+" let b:AutoPairs = {'(':')', '[':']', '{':'}'}
 
 " Set make to build and open the pdf
 set makeprg=latexmk\ -xelatex\ -bibtex\ %\ &&\ open\ %:r.pdf
