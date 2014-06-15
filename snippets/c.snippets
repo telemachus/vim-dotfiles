@@ -15,6 +15,7 @@ snippet mainv
 	main(void)
 	{
 		${0}
+
 		return 0;
 	}
 ##
@@ -36,7 +37,7 @@ snippet ndef
 
 # define
 snippet def
-	#define
+	#define ${1:FOO} ${2:BAR}
 
 # ifdef...endif
 snippet ifdef
