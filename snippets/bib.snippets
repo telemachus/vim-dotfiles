@@ -1,0 +1,38 @@
+# @book
+snippet book @book
+	@book{ ${1:citation},
+		author = {${2:author}},
+		title = {${3:title}},
+		publisher = {${4:publisher}},
+		year = ${5:year},
+		address = {${6:address}}
+	}
+# @edbook
+snippet edbook @edbook
+	@book{ ${1:citation},
+		editor = {${2:editor}},
+		title = {${3:title}},
+		publisher = {${4:publisher}},
+		year = ${5:year},
+		address = {${6:address}}
+	}
+# @article
+snippet article @article
+	@article{ ${1:citation},
+		author = {${2:author}},
+		title = {${3:title}},
+		journal = {${4:journal}},
+		year = ${5:year},
+		volume = ${6:volume},
+		number = ${7:number},
+		pages = {${8:pages}}
+	}
+# @incollection
+snippet incollection @incollection
+	@incollection{ ${1:citation},
+		author = {${2:author}},
+		title = {${3:title}},
+		booktitle = {${4:booktitle}},
+		pages = {${5:pages}},
+		crossref = {${6:crossref}}
+	}

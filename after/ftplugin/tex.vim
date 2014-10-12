@@ -64,3 +64,6 @@ syn match texRefZone '\\citeyearpar\%(\*\=\)\='
 syn match texRefZone '\\citeauthor\%(\*\=\)\='
             \ nextgroup=texRefOption,texCite
 " }}}
+
+" Specialized fold-marker {{{
+setlocal foldmarker=[[-,-]]
