@@ -114,32 +114,47 @@ snippet cha \chapter
 	\chapter{${1:chapter name}}
 	\label{cha:${2:$1}}
 	${0}
-# Section
+# Unlabeled section
 snippet sec \section
+	\section{${1:section name}}
+
+	${0}
+# Unlabeled section with optional parameter for short description
+snippet osec \section
+	\section[${1:short}]{${2:long}}
+
+	${0}
+# Unlabeled subsection
+snippet ssec \subsection
+	\subsection{${1:description}}
+
+	${0}
+# Labeled section
+snippet lsec \section
 	\section{${1:section name}}
 	\label{sec:${2:$1}}
 	${0}
-# Section without number
-snippet sec* \section*
+# Labeled section without number
+snippet lsec* \section*
 	\section*{${1:section name}}
 	\label{sec:${2:$1}}
 	${0}
-# Sub Section
-snippet sub \subsection
+# Labeled sub section
+snippet lsub \subsection
 	\subsection{${1:subsection name}}
 	\label{sub:${2:$1}}
 	${0}
-# Sub Section without number
-snippet sub* \subsection*
+# Labeled sub section without number
+snippet lsub* \subsection*
 	\subsection*{${1:subsection name}}
 	\label{sub:${2:$1}}
 	${0}
-# Sub Sub Section
+# Labeled sub sub section
 snippet subs \subsubsection
 	\subsubsection{${1:subsubsection name}}
 	\label{ssub:${2:$1}}
 	${0}
-# Sub Sub Section without number
+# Labeled sub sub section without number
 snippet subs* \subsubsection*
 	\subsubsection*{${1:subsubsection name}}
 	\label{ssub:${2:$1}}
@@ -280,3 +295,12 @@ snippet urlc
 	\url{`@+`} ${0}
 snippet hrefc
 	\href{`@+`}{${1}} ${0}
+# My custom fold
+snippet fold [[-,-]]
+	% [[-
+
+	${1}
+
+	% -]]
+
+	${0}
