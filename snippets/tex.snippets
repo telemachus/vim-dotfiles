@@ -117,17 +117,14 @@ snippet cha \chapter
 # Unlabeled section
 snippet sec \section
 	\section{${1:section name}}
-
 	${0}
 # Unlabeled section with optional parameter for short description
 snippet osec \section
 	\section[${1:short}]{${2:long}}
-
 	${0}
 # Unlabeled subsection
 snippet ssec \subsection
 	\subsection{${1:description}}
-
 	${0}
 # Labeled section
 snippet lsec \section
@@ -297,10 +294,6 @@ snippet hrefc
 	\href{`@+`}{${1}} ${0}
 # My custom fold
 snippet fold [[-,-]]
-	% [[-
-
-	${1}
-
-	% -]]
-
-	${0}
+	% [[- ${1:Fold label}
+	${2}
+	% -]] $1

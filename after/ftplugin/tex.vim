@@ -65,5 +65,6 @@ syn match texRefZone '\\citeauthor\%(\*\=\)\='
             \ nextgroup=texRefOption,texCite
 " }}}
 
-" Specialized fold-marker {{{
+" Specialized fold-marker [[-,-]] {{{
 set foldmarker=[[-,-]]
+" }}}
