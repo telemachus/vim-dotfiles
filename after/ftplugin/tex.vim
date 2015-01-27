@@ -7,6 +7,7 @@
 setlocal makeprg=latexmk\ -xelatex\ -bibtex\ %\ &&\ open\ %:r.pdf
 
 " Soft wrap, please
+setlocal textwidth=0 wrapmargin=0
 setlocal wrap linebreak nolist
 setlocal showbreak=…
 " }}}
