@@ -10,6 +10,7 @@ setlocal makeprg=latexmk\ -xelatex\ -bibtex\ %\ &&\ open\ %:r.pdf
 setlocal textwidth=0 wrapmargin=0
 setlocal wrap linebreak nolist
 setlocal showbreak=…
+set lazyredraw
 " }}}
 
 " Automatically swap `` for " and ` for ' {{{
