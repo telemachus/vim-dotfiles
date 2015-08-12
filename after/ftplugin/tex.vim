@@ -10,13 +10,10 @@ setlocal wrap linebreak nolist
 set lazyredraw
 " }}}
 
-" Automatically swap `` for " and ` for ' {{{
-" The TexQuotes method is taken wholesale from auctex.vim.
-" http://www.vim.org/scripts/script.php?script_id=162
+" Automatically swap `` or '' for " and ` for ' {{{
 "
-" The TexQuote method is obviously just a simple-minded adaptation.
-" Smart quotes.
-" Thanks to Ron Aaron <ron@mossbayeng.com>.
+" The TexQuotes and TexQuote methods are adapted from auctex.vim.
+" http://www.vim.org/scripts/script.php?script_id=162
 function! s:TexQuotes()
     let insert = '"'
     let left = getline('.')[col('.')-2]
@@ -52,6 +49,7 @@ endif
 
 syntax match texString "`" conceal cchar='
 syntax match texString "``" conceal cchar="
+syntax match texString "''" conceal cchar="
 set conceallevel=2
 
 " Don't highlight the changes made by conceal since that makes opening
