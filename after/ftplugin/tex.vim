@@ -24,6 +24,8 @@ function! s:TexQuotes()
         let insert = '``'
     elseif left == '\'
         let insert = "''"
+    else 
+	let insert = "''"
     endif
     return insert
 endfunction
