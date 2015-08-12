@@ -23,7 +23,7 @@ function! s:TexQuotes()
     if left =~ '^\(\|\s\)$'
         let insert = '``'
     elseif left == '\'
-        let insert = '"'
+        let insert = "''"
     endif
     return insert
 endfunction
