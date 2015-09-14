@@ -200,17 +200,17 @@ snippet citey \citeyear
 	\citeyear{${1}} ${0}
 snippet fcite \footcite[]{}
 	\footcite[${1}]{${2}}${0}
-#Formating text: italic, bold, underline, small capital, emphase ..
+#Formating text: italic, bold, underline, small capital, emphasis ..
 snippet itc italic text
-	\textit{${1}}${2}
+	\textit{${1:text}}${2}
 snippet bf bold face text
 	\textbf{${1:text}}${2}
 snippet under underline text
-	\underline{${0:text}}
+	\underline{${1:text}}${2}
 snippet emp emphasize text
-	\emph{${0:text}}
+	\emph{${1:text}}${2}
 snippet sc small caps text
-	\textsc{${0:text}}
+	\textsc{${1:text}}${2}
 #Choosing font
 snippet sf sans serife text
 	\textsf{${0:text}}
