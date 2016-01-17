@@ -192,8 +192,10 @@ snippet citep \citep
 	\citep{${1}} ${0}
 snippet citet \citet
 	\citet{${1}} ${0}
-snippet cite \cite[]{}
-	\cite[${1}]{${2}} ${0}
+snippet cite \cite{}
+	\cite{${1}}${0}
+snippet citeb \cite[]{}
+	\cite[${1}]{${2}}${0}
 snippet citea \citeauthor
 	\citeauthor{${1}} ${0}
 snippet citey \citeyear
@@ -292,19 +294,20 @@ snippet urlc
 	\url{`@+`} ${0}
 snippet hrefc
 	\href{`@+`}{${1}} ${0}
-# My custom fold
-snippet fold [[-,-]]
-	% [[- ${1:Fold label}
+# My custom fold [[-,-]]
+snippet fold
+	% [[- ${1:Label}
 	${2}
 	% -]] $1
+	${0}
 # Commentary
 snippet comm
 	\comment{${1:start}}{${2:end}}
 
-	${3}
+	${0}
 # Lemma
 snippet lem
-	\lem{${1:item}}${2}
+	\lem{${1:item}}${0}
 # Lemma + indent
 snippet ilem
-	\indent\lem{${1:item}}${2}
+	\indent\lem{${1:item}}${0}
