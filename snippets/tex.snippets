@@ -16,8 +16,12 @@ snippet dmo \DeclareMathOperator
 # \begin{}...\end{}
 snippet begin \begin{} ... \end{} block
 	\begin{${1:env}}
-		${0}
-	\end{$1}
+		${2}
+	\end{$1}${0}
+snippet quote \begin{quote} ... \end{quote}
+	\begin{quote}
+		${1}
+	\end{quote}${0}
 # Tabular
 snippet tab tabular (or arbitrary) environment
 	\begin{${1:tabular}}{${2:c}}
@@ -69,13 +73,13 @@ snippet lab \label
 # Enumerate
 snippet enum enumerate environment
 	\begin{enumerate}
-		\item ${0}
-	\end{enumerate}
+		\item ${1}
+	\end{enumerate}${0}
 # Itemize
 snippet itemize itemize environment
 	\begin{itemize}
-		\item ${0}
-	\end{itemize}
+		\item ${1}
+	\end{itemize}${0}
 snippet item \item
 	\item ${1}${2}
 # Description
@@ -311,3 +315,6 @@ snippet lem
 # Lemma + indent
 snippet ilem
 	\indent\lem{${1:item}}${0}
+# Lemma with colon
+snippet lemc
+	\lemc{${1:item}}${0}
