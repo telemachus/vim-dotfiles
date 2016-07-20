@@ -19,6 +19,8 @@ function! s:TexQuotes()
     let left = getline('.')[col('.')-2]
     if left =~ '^\(\|\s\)$'
         let insert = '``'
+    elseif left == '('
+        let insert = '``'
     elseif left == '\'
         let insert = '"'
     else 
@@ -32,6 +34,8 @@ function! s:TexQuote()
     let left = getline('.')[col('.')-2]
     if left =~ '^\(\|\s\)$'
         let insert = '`'
+    elseif left == '('
+        let insert = "`"
     elseif left == '\'
         let insert = "'"
     endif
