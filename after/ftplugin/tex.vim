@@ -47,18 +47,18 @@ inoremap <silent> <buffer> ' <C-R>=<SID>TexQuote()<CR>
 " }}}
 
 " Conceal {{{
-if !has('conceal')
-    finish
-endif
+" if !has('conceal')
+"     finish
+" endif
 
-syntax match texString "`" conceal cchar='
-syntax match texString "``" conceal cchar="
-syntax match texString "''" conceal cchar="
-set conceallevel=2
+" syntax match texString "`" conceal cchar='
+" syntax match texString "``" conceal cchar="
+" syntax match texString "''" conceal cchar="
+" set conceallevel=2
 
-" Don't highlight the changes made by conceal since that makes opening
-" quotes look different from closing quotes and from their surroundings.
-hi clear Conceal
+" " Don't highlight the changes made by conceal since that makes opening
+" " quotes look different from closing quotes and from their surroundings.
+" hi clear Conceal
 " }}}
 
 " Add Natbib syntax highlighting {{{
@@ -74,4 +74,12 @@ syn match texRefZone '\\citeauthor\%(\*\=\)\='
 
 " Specialized fold-marker [[-,-]] {{{
 set foldmarker=[[-,-]]
+" }}}
+
+" Surround addition {{{
+if exists('g:loaded_surround')
+	" vim-surround: l for `foo' and L for ``foo''
+	let b:surround_{char2nr('l')} = "`\r'"
+	let b:surround_{char2nr('L')} = "``\r''"
+endif
 " }}}
