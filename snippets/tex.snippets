@@ -304,6 +304,22 @@ snippet fold
 	${2}
 	% -]] $1
 	${0}
+# My custom foldsec [[-,-]]
+snippet foldsec
+	% [[- ${1:Label}
+	\section{$1}
+
+	${2}
+	% -]] $1
+	${0}
+# My custom foldsub [[-,-]]
+snippet foldsub
+	% [[- ${1:Label}
+	\subsection{$1}
+
+	${2}
+	% -]] $1
+	${0}
 # Commentary
 snippet comm
 	\comment{${1:start}}{${2:end}}
