@@ -122,6 +122,10 @@ snippet cha \chapter
 snippet sec \section
 	\section{${1:section name}}
 	${0}
+# Unnumbered section
+snippet sec* \section*
+	\section*{${1:section name}}
+	${0}
 # Unlabeled section with optional parameter for short description
 snippet osec \section
 	\section[${1:short}]{${2:long}}
@@ -129,6 +133,10 @@ snippet osec \section
 # Unlabeled subsection
 snippet ssec \subsection
 	\subsection{${1:description}}
+	${0}
+# Unnumbered subsection
+snippet ssec* \subsection*
+	\subsection*{${1:subsection name}}
 	${0}
 # Labeled section
 snippet lsec \section
