@@ -361,11 +361,15 @@ snippet comm
 snippet lem
 	\lem{${1:item}}${0}
 # Lemma + indent
-snippet ilem
+snippet item
 	\indent\lem{${1:item}}${0}
 # Lemma with colon
 snippet lemc
 	\lemc{${1:item}}${0}
 # Greek text
-snippet gr
+snippet gr Greek text
 	\textgreek{${1:greek}}${0}
+snippet (gr Greek text after paren
+	(\textgreek{${1:greek}}${0}
+snippet [gr Greek text after bracket
+	[\textgreek{${1:greek}}${0}
