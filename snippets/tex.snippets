@@ -219,6 +219,14 @@ snippet itc italic text
 	\textit{${1:text}}${2}
 snippet bf bold face text
 	\textbf{${1:text}}${2}
+snippet (itc italic text after paren
+	(\textit{${1:text}}${2}
+snippet (bf bold face text after paren
+	(\textbf{${1:text}}${2}
+snippet [itc italic text after bracket
+	[\textit{${1:text}}${2}
+snippet (bf bold face text after bracket
+	(\textbf{${1:text}}${2}
 snippet under underline text
 	\underline{${1:text}}${2}
 snippet emp emphasize text
@@ -358,3 +366,6 @@ snippet ilem
 # Lemma with colon
 snippet lemc
 	\lemc{${1:item}}${0}
+# Greek text
+snippet gr
+	\textgreek{${1:greek}}${0}
