@@ -31,7 +31,7 @@ endglobal
 
 post_expand "fix_indent(snip)"
 snippet "\\?i(tem)?" "Individual item" br
-	\item $0
+\item $0
 endsnippet
 
 snippet cha "Chapter" b
@@ -83,11 +83,11 @@ ${0}
 endsnippet
 
 snippet itc "italic text" w
-\textit{${1:VISUAL}}${0}
+\textit{${1:${VISUAL}}}${0}
 endsnippet
 
 snippet bf "bold text" w
-\textbf{${1:VISUAL}}${0}
+\textbf{${1:${VISUAL}}}${0}
 
 snippet ft "footnote" w
 \footnote{${1}}${0}
