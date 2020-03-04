@@ -1,5 +1,3 @@
-priority -50
-
 snippet "\\?b(egin)?" "begin{} / end{}" br
 \begin{${1:something}}
 	${0:${VISUAL}}
@@ -88,9 +86,14 @@ endsnippet
 
 snippet bf "bold text" w
 \textbf{${1:${VISUAL}}}${0}
+endsnippet
+
+snippet gr "Greek text" w
+\textgreek{${1:${VISUAL}}}${0}
+endsnippet
 
 snippet ft "footnote" w
-\footnote{${1}}${0}
+\footnote[${1:pre text}][${2: post text}]{${3:citation}}${0}
 endsnippet
 
 snippet fold "make a fold [[-,-]]" b
@@ -107,10 +110,6 @@ snippet foldsec "make a fold with a section [[-,-]]" b
 ${2}
 % -]] ${1}
 ${0}
-endsnippet
-
-snippet gr "Greek text" w
-\textgreek{${1:${VISUAL}}}${0}
 endsnippet
 
 # vim:ft=snippets:

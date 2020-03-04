@@ -1,4 +1,4 @@
-snippet book "@book" b
+snippet book "book entry" b
 @book{ ${1:citation},
 	author = {${2:author}},
 	title = {${3:title}},
@@ -8,10 +8,11 @@ snippet book "@book" b
 	address = {${7:address}},
 	keywords = {${8:keywords}},
 }
+
 $0
 endsnippet
 
-snippet article "@article" b
+snippet article "article entry" b
 @article{ ${1:citation},
 	author = {${2:author}},
 	title = {${3:title}},
@@ -22,10 +23,12 @@ snippet article "@article" b
 	number = {${8:number}},
 	pages = {${9:pages}},
 	keywords = {${10:keywords}},
-}$0
+}
+
+$0
 endsnippet
 
-snippet incollection "@incollection" b
+snippet incollection "incollection entry" b
 @incollection{ ${1:citation},
 	author = {${2:author}},
 	title = {${3:title}},
@@ -35,10 +38,12 @@ snippet incollection "@incollection" b
 	pages = {${7:pages}},
 	crossref = {${8:crossref}},
 	keywords = {${9:keywords}},
-}$0
+}
+
+$0
 endsnippet
 
-snippet edbook "@edbook" b
+snippet edbook "edbook entry" b
 @book{ ${1:citation},
 	editor = {${2:editor}},
 	title = {${3:title}},
@@ -47,10 +52,12 @@ snippet edbook "@edbook" b
 	year = {${6:year}},
 	address = {${7:address}},
 	keywords = {${8:keywords}},
-}$0
+}
+
+$0
 endsnippet
 
-snippet misc "@misc" b
+snippet misc "misc entry" b
 @misc { ${1:citation},
 	author = {${2:author}},
 	title = {${3:title}},
@@ -69,6 +76,6 @@ snippet cr "crossref = {},"
 crossref = {${1:crossref}},$0
 endsnippet
 
-snippet sh "shorttitle = {},"
+snippet st "shorttitle = {},"
 shortitle = {${1:short title}},$0
 endsnippet
