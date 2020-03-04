@@ -92,8 +92,12 @@ snippet gr "Greek text" w
 \textgreek{${1:${VISUAL}}}${0}
 endsnippet
 
-snippet ft "footnote" w
-\footnote[${1:pre text}][${2: post text}]{${3:citation}}${0}
+snippet ft "\footcite[][]{}" w
+\footcite[${1:pre text}][${2: post text}]{${3:citation}}${0}
+endsnippet
+
+snippet fn "\footnote" w
+\footnote{${1}}${0}
 endsnippet
 
 snippet fold "make a fold [[-,-]]" b
