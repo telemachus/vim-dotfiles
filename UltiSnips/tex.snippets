@@ -102,17 +102,17 @@ endsnippet
 
 snippet fold "make a fold [[-,-]]" b
 % [[- ${1:label}
-${2}
-% -]] ${1:label}
+${2:${VISUAL}}
+% -]] $1
 ${0}
 endsnippet
 
 snippet foldsec "make a fold with a section [[-,-]]" b
 % [[- ${1:label}
-\section{${1:label}}
+\section{$1}
 
-${2}
-% -]] ${1:label}
+${2:${VISUAL}}
+% -]] $1
 ${0}
 endsnippet
 
