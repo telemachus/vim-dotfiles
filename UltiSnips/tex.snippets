@@ -116,4 +116,31 @@ ${2:${VISUAL}}
 ${0}
 endsnippet
 
+snippet foldsubsec "make a fold with a subsection [[-,-]]" b
+% [[- ${1:label}
+\subsection{$1}
+
+${2:${VISUAL}}
+% -]] $1
+${0}
+endsnippet
+
+snippet foldsec* "make a fold with a section* [[-,-]]" b
+% [[- ${1:label}
+\section*{$1}
+
+${2:${VISUAL}}
+% -]] $1
+${0}
+endsnippet
+
+snippet foldsubsec* "make a fold with a subsection* [[-,-]]" b
+% [[- ${1:label}
+\subsection*{$1}
+
+${2:${VISUAL}}
+% -]] $1
+${0}
+endsnippet
+
 # vim:ft=snippets:
