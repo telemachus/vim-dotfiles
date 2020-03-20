@@ -4,13 +4,13 @@ snippet "\\?b(egin)?" "begin{} / end{}" br
 \end{$1}
 endsnippet
 
-snippet enum "Enumerate" b
+snippet "enum(erate)?" "Enumerate" br
 \begin{enumerate}
 	\item $0
 \end{enumerate}
 endsnippet
 
-snippet item "Itemize" b
+snippet itz "Itemize" b
 \begin{itemize}
 	\item $0
 \end{itemize}
@@ -32,47 +32,10 @@ snippet "\\?i(tem)?" "Individual item" br
 \item $0
 endsnippet
 
-snippet cha "Chapter" b
+snippet "chap(ter)?" "Chapter" br
 \chapter{${1:chapter name}}%
 
 $0
-endsnippet
-
-snippet sec "Section" b
-\section{${1:${VISUAL:section name}}}%
-
-$0
-endsnippet
-
-snippet sec* "Section" b
-\section*{${1:${VISUAL:section name}}}%
-
-${0}
-endsnippet
-
-
-snippet sub "Subsection" b
-\subsection{${1:${VISUAL:subsection name}}}%
-
-$0
-endsnippet
-
-snippet sub* "Subsection" b
-\subsection*{${1:${VISUAL:subsection name}}}%
-
-${0}
-endsnippet
-
-snippet ssub "Subsubsection" b
-\subsubsection{${1:${VISUAL:subsubsection name}}}%
-
-$0
-endsnippet
-
-snippet ssub* "Subsubsection" b
-\subsubsection*{${1:${VISUAL:subsubsection name}}}%
-
-${0}
 endsnippet
 
 snippet up "\usepackage" b
@@ -80,7 +43,7 @@ snippet up "\usepackage" b
 ${0}
 endsnippet
 
-snippet itc "italic text" w
+snippet it "italic text" w
 \textit{${1:${VISUAL}}}${0}
 endsnippet
 
@@ -90,6 +53,42 @@ endsnippet
 
 snippet gr "Greek text" w
 \textgreek{${1:${VISUAL}}}${0}
+endsnippet
+
+snippet "sec(tion)?" "\section{}" br
+\section{${1:${VISUAL:section name}}}%
+
+$0
+endsnippet
+
+snippet "sec(tion)?\*" "\section*{}" br
+\section*{${1:${VISUAL:section name}}}%
+
+${0}
+endsnippet
+
+snippet "sub(sec)?" "\subsection{}" br
+\subsection{${1:${VISUAL:subsection name}}}%
+
+$0
+endsnippet
+
+snippet "sub(sec)?\*" "\subsection*{}" br
+\subsection*{${1:${VISUAL:subsection name}}}%
+
+${0}
+endsnippet
+
+snippet "ssub(sec)?" "\subsubsection{}" br
+\subsubsection{${1:${VISUAL:subsubsection name}}}%
+
+$0
+endsnippet
+
+snippet "ssub(sec)?\*" "\subsubsection*{}" br
+\subsubsection*{${1:${VISUAL:subsubsection name}}}%
+
+${0}
 endsnippet
 
 snippet fc "\footcite[][]{}" w
