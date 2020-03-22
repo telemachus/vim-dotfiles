@@ -7,7 +7,8 @@ setlocal makeprg=latexmk\ -xelatex\ -bibtex\ %\ &&\ open\ %:r.pdf
 " Soft wrap, please
 setlocal textwidth=0 wrapmargin=0
 setlocal wrap linebreak nolist
-set lazyredraw
+setlocal lazyredraw
+setlocal showbreak=↪
 " }}}
 
 " Automatically swap `` or '' for " and ` for ' {{{
@@ -46,30 +47,15 @@ inoremap <silent> <buffer> " <C-R>=<SID>TexQuotes()<CR>
 inoremap <silent> <buffer> ' <C-R>=<SID>TexQuote()<CR>
 " }}}
 
-" Conceal {{{
-" if !has('conceal')
-"     finish
-" endif
-
-" syntax match texString "`" conceal cchar='
-" syntax match texString "``" conceal cchar="
-" syntax match texString "''" conceal cchar="
-" set conceallevel=2
-
-" " Don't highlight the changes made by conceal since that makes opening
-" " quotes look different from closing quotes and from their surroundings.
-" hi clear Conceal
-" }}}
-
 " Add Natbib syntax highlighting {{{
-syn match texRefZone '\\citeasnoun\%([tp]\*\=\)\='
-            \ nextgroup=texRefOption,texCite
-syn match texRefZone '\\citeal\%([tp]\*\=\)\='
-            \ nextgroup=texRefOption,texCite
-syn match texRefZone '\\citeyearpar\%(\*\=\)\='
-            \ nextgroup=texRefOption,texCite
-syn match texRefZone '\\citeauthor\%(\*\=\)\='
-            \ nextgroup=texRefOption,texCite
+" syn match texRefZone '\\citeasnoun\%([tp]\*\=\)\='
+"             \ nextgroup=texRefOption,texCite
+" syn match texRefZone '\\citeal\%([tp]\*\=\)\='
+"             \ nextgroup=texRefOption,texCite
+" syn match texRefZone '\\citeyearpar\%(\*\=\)\='
+"             \ nextgroup=texRefOption,texCite
+" syn match texRefZone '\\citeauthor\%(\*\=\)\='
+"             \ nextgroup=texRefOption,texCite
 " }}}
 
 " Specialized fold-marker [[-,-]] {{{
