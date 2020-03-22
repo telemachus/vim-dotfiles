@@ -142,6 +142,14 @@ ${2:${VISUAL}}
 ${0}
 endsnippet
 
+snippet tq "\textquote[<citation>][<punctuation>]{<quote>}" w
+\textquote[${2:citation}][${3:punctuation}]{${1:quote${VISUAL}}}$0
+endsnippet
+
+snippet eq "\enquote{<quote>}" w
+\enquote{${1:quote${VISUAL}}}$0
+endsnippet
+
 snippet notes "Skeleton for LaTeX notes the way I like" b
 % [[- LaTeX prelude
 \documentclass[12pt,letterpaper]{article}
