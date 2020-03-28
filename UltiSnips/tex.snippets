@@ -1,25 +1,25 @@
 snippet "\\?b(egin)?" "\begin{}…\end{}" br
 \begin{${1:something}}
-	${0:${VISUAL}}
-\end{$1}
+	${2:${VISUAL}}
+\end{$1}$0
 endsnippet
 
 snippet "enum(erate)?" "\begin{enumerate}…\end{enumerate}" br
 \begin{enumerate}
-	\item $0
-\end{enumerate}
+	\item $1
+\end{enumerate}$0
 endsnippet
 
 snippet itz "\begin{itemize}…\end{itemize}" b
 \begin{itemize}
-	\item $0
-\end{itemize}
+	\item $1
+\end{itemize}$0
 endsnippet
 
 snippet desc "\begin{description}…\end{description}" b
 \begin{description}
-	\item[$1] $0
-\end{description}
+	\item[$1] $2
+\end{description}$0
 endsnippet
 
 global !p
@@ -33,62 +33,47 @@ snippet "\\?i(tem)?" "\item" br
 endsnippet
 
 snippet "chap(ter)?" "\chapter{}" br
-\chapter{${1:chapter name}}%
-
-$0
+\chapter{${1:chapter name}}$0
 endsnippet
 
 snippet up "\usepackage" b
-\usepackage[${1:options}]{${2:package}}
-${0}
+\usepackage[${1:options}]{${2:package}}$0
 endsnippet
 
 snippet it "\textit{}" w
-\textit{${1:${VISUAL}}}${0}
+\textit{${1:${VISUAL}}}$0
 endsnippet
 
 snippet bf "\textbf{}" w
-\textbf{${1:${VISUAL}}}${0}
+\textbf{${1:${VISUAL}}}$0
 endsnippet
 
 snippet gr "\textgreek{}" w
-\textgreek{${1:${VISUAL}}}${0}
+\textgreek{${1:${VISUAL}}}$0
 endsnippet
 
 snippet "sec(tion)?" "\section{}" br
-\section{${1:${VISUAL:section name}}}%
-
-$0
+\section{${1:${VISUAL:section name}}}$0
 endsnippet
 
 snippet "sec(tion)?\*" "\section*{}" br
-\section*{${1:${VISUAL:section name}}}%
-
-${0}
+\section*{${1:${VISUAL:section name}}}$0
 endsnippet
 
 snippet "sub(sec)?" "\subsection{}" br
-\subsection{${1:${VISUAL:subsection name}}}%
-
-$0
+\subsection{${1:${VISUAL:subsection name}}}$0
 endsnippet
 
 snippet "sub(sec)?\*" "\subsection*{}" br
 \subsection*{${1:${VISUAL:subsection name}}}%
-
-${0}
 endsnippet
 
 snippet "ssub(sec)?" "\subsubsection{}" br
-\subsubsection{${1:${VISUAL:subsubsection name}}}%
-
-$0
+\subsubsection{${1:${VISUAL:subsubsection name}}}$0
 endsnippet
 
 snippet "ssub(sec)?\*" "\subsubsection*{}" br
-\subsubsection*{${1:${VISUAL:subsubsection name}}}%
-
-${0}
+\subsubsection*{${1:${VISUAL:subsubsection name}}}$0
 endsnippet
 
 snippet fc "\footcite[][]{}" w
@@ -102,8 +87,7 @@ endsnippet
 snippet fold "Make a fold [[-,-]]" b
 % [[- ${1:label}
 ${2:${VISUAL}}
-% -]] $1
-${0}
+% -]] $1$0
 endsnippet
 
 snippet foldsec "Make a fold with a section [[-,-]]" b
@@ -111,8 +95,7 @@ snippet foldsec "Make a fold with a section [[-,-]]" b
 \section{$1}
 
 ${2:${VISUAL}}
-% -]] $1
-${0}
+% -]] $1$0
 endsnippet
 
 snippet foldsubsec "Make a fold with a subsection [[-,-]]" b
@@ -120,8 +103,7 @@ snippet foldsubsec "Make a fold with a subsection [[-,-]]" b
 \subsection{$1}
 
 ${2:${VISUAL}}
-% -]] $1
-${0}
+% -]] $1$0
 endsnippet
 
 snippet foldsec* "Make a fold with a section* [[-,-]]" b
@@ -129,8 +111,7 @@ snippet foldsec* "Make a fold with a section* [[-,-]]" b
 \section*{$1}
 
 ${2:${VISUAL}}
-% -]] $1
-${0}
+% -]] $1$0
 endsnippet
 
 snippet foldsubsec* "Make a fold with a subsection* [[-,-]]" b
@@ -138,8 +119,7 @@ snippet foldsubsec* "Make a fold with a subsection* [[-,-]]" b
 \subsection*{$1}
 
 ${2:${VISUAL}}
-% -]] $1
-${0}
+% -]] $1$0
 endsnippet
 
 snippet tq "\textquote[<citation>][<punctuation>]{<quote>}" w
@@ -159,7 +139,7 @@ snippet notes "Skeleton for LaTeX notes the way I like" b
 
 \usepackage[nolocalmarks]{polyglossia}
 \setdefaultlanguage{english}
-\setotherlanguage[variant=ancient]{latin}
+\setotherlanguage[variant=classic]{latin}
 \setotherlanguage[variant=ancient]{greek}
 \newfontfamily\greekfont[Script=Greek,Scale=MatchLowercase]{GFS Neohellenic}
 
