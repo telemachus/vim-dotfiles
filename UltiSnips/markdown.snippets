@@ -1,28 +1,26 @@
 priority -50
 
 snippet it "\italics"
-	*${1:${VISUAL}}*${0}
+	*${1:${VISUAL}}*$0
 endsnippet
 
 snippet bf "\bold"
-	**${1:${VISUAL}}**${0}
+	**${1:${VISUAL}}**$0
 endsnippet
 
 snippet cd "\code"
-\`${1:${VISUAL}}\`${0}
+\`${1:${VISUAL}}\`$0
 endsnippet
 
 snippet fcd "\fencedcode" b
 \`\`\`${2:type}
 ${1:${VISUAL}}
-\`\`\`
-${0}
+\`\`\`$0
 endsnippet
 
 snippet day "\day" b
 + In class
 	+ ${1}
 + Homework
-	+ ${2}
-${0}
+	+ ${2}$0
 endsnippet
