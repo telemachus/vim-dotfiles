@@ -59,7 +59,7 @@ inoremap <silent> <buffer> ' <C-R>=<SID>TexQuote()<CR>
 " }}}
 
 " Specialized fold-marker [[-,-]] {{{
-set foldmarker=[[-,-]]
+setlocal foldmarker=[[-,-]]
 " }}}
 
 " Surround addition {{{

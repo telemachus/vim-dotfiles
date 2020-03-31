@@ -1,1 +1,1 @@
-set autoindent nosmartindent nocindent
+setlocal autoindent nosmartindent nocindent
