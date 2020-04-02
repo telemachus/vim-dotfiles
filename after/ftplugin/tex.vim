@@ -2,7 +2,7 @@
 setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 
 " Set make to build and open the pdf
-setlocal makeprg=latexmk\ -xelatex\ -bibtex\ %\ &&\ open\ %:r.pdf
+setlocal makeprg=latexmk\ -xelatex\ -bibtex\ %\ &&\ open\ build/%:r.pdf
 
 " Soft wrap, please
 setlocal textwidth=0 wrapmargin=0
