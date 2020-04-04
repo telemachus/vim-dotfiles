@@ -5,6 +5,8 @@ setlocal colorcolumn=-2
 setlocal list
 setlocal lazyredraw
 
+setlocal formatprg=par\ -w75
+
 " 1. or a. or A. etc
 setlocal formatlistpat=^\\s*\\([0-9]\\+\\\|[a-zA-Z]\\+\\)\\.\\s\\+
 " Various bullets
