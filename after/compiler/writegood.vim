@@ -1,1 +1,1 @@
-CompilerSet makeprg=.node/.bin/writegood\ --parse
+CompilerSet makeprg=.node_modules/.bin/writegood\ --parse
