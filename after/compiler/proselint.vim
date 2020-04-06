@@ -1,1 +1,1 @@
-CompilerSet makeprg={proselint}\ [--compact]
+CompilerSet makeprg=proselint\ --compact
