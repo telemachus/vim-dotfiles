@@ -34,7 +34,7 @@ let g:dispatch_no_maps = 1
 " let g:lastplace_open_folds = 0
 
 " For https://github.com/tpope/vim-markdown
-let g:markdown_fenced_languages = ['html', 'python', 'lua', 'bash=sh', 'latex']
+let g:markdown_fenced_languages = ['html', 'python', 'lua', 'bash=sh', 'tex']
 let g:markdown_syntax_conceal = 0
 
 " For https://github.com/SirVer/ultisnips
