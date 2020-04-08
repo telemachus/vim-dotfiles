@@ -6,7 +6,7 @@ setlocal makeprg=latexmk\ -xelatex\ -bibtex\ %\ &&\ open\ build/%:r.pdf
 
 " Soft wrap, please
 setlocal textwidth=0 wrapmargin=0
-setlocal wrap linebreak nolist
+setlocal wrap linebreak list
 setlocal lazyredraw
 setlocal showbreak=↪
 " }}}
@@ -45,17 +45,6 @@ endfunction
 
 inoremap <silent> <buffer> " <C-R>=<SID>TexQuotes()<CR>
 inoremap <silent> <buffer> ' <C-R>=<SID>TexQuote()<CR>
-" }}}
-
-" Add Natbib syntax highlighting {{{
-" syn match texRefZone '\\citeasnoun\%([tp]\*\=\)\='
-"             \ nextgroup=texRefOption,texCite
-" syn match texRefZone '\\citeal\%([tp]\*\=\)\='
-"             \ nextgroup=texRefOption,texCite
-" syn match texRefZone '\\citeyearpar\%(\*\=\)\='
-"             \ nextgroup=texRefOption,texCite
-" syn match texRefZone '\\citeauthor\%(\*\=\)\='
-"             \ nextgroup=texRefOption,texCite
 " }}}
 
 " Specialized fold-marker [[-,-]] {{{
