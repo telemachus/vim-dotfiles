@@ -70,3 +70,10 @@ map <silent> <leader>nm <Plug>MacronsOff
 " For https://github.com/machakann/vim-sandwich
 nmap s <Nop>
 xmap s <Nop>
+
+" yank the rest of the line into the clipboard
+nnoremap <silent> <leader>y "+y$
+nnoremap <silent> <leader>Y :call LineToClipboard()<CR>
+
+" yank visual selection into the clipboard
+vnoremap <leader>y "+y
