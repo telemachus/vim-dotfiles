@@ -6,4 +6,5 @@ setlocal lazyredraw
 setlocal showbreak=↪
 setlocal ts=8 sw=4 sts=4 expandtab
 setlocal colorcolumn=""
-call textobj#quote#init({'educate': 1})
+setlocal spell
+call textobj#quote#init({'educate': 0})

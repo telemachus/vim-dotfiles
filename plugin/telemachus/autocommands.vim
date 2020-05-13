@@ -12,6 +12,15 @@ autocmd vim_config BufNewFile,BufNew,BufRead *.h setlocal filetype=c
 autocmd vim_config BufNewFile,BufNew,BufRead *.rockspec
       \ setlocal filetype=lua
 
+" autocmd vim_config InsertCharPre *.md if v:char == '`' | ToggleEducate | endif
+" Thanks to https://github.com/mgedmin/dotvim/blob/master/ftplugin/python.vim#L18-L26
+" autocmd vim_config CursorMoved,CursorMovedI,WinEnter *.md
+"             \ if IsMarkdownCode() |
+"             \     NoEducate |
+"             \ else |
+"             \     Educate |
+"             \ endif
+
 " Have Goyo engage Limelight
 autocmd vim_config User GoyoEnter Limelight
 autocmd vim_config User GoyoLeave Limelight!

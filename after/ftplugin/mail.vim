@@ -4,7 +4,7 @@ setlocal textwidth=80
 setlocal colorcolumn=-2
 setlocal list
 setlocal lazyredraw
-
+setlocal spell
 setlocal formatprg=par\ -w75
 
 " 1., 2., 3., etc.
