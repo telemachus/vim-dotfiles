@@ -59,8 +59,8 @@ nnoremap <silent> [Q :cclose<CR>
 nnoremap <silent> ]Q :copen<CR>
 
 " For https://github.com/reedes/vim-textobj-quote
-map <silent> <leader>qc <Plug>ReplaceWithCurly
-map <silent> <leader>qs <Plug>ReplaceWithStraight
+" map <silent> <leader>qc <Plug>ReplaceWithCurly
+" map <silent> <leader>qs <Plug>ReplaceWithStraight
 
 " For https://bitbucket.org/telemachus/vim-macrons
 map <silent> <leader>mf <Plug>CharMacronFlip
