@@ -4,10 +4,13 @@
 " See :help ft-sh-syntax
 let g:is_bash = 1
 
-" Help neovim deal with snakes
+" Help neovim deal with snakes; disable node, ruby, and perl too
 if has('nvim')
     let g:python3_host_prog = '/usr/local/bin/python3'
     let g:loaded_python_provider = 0
+    let g:loaded_node_provider = 0
+    let g:loaded_ruby_provider = 0
+    let g:loaded_perl_provider = 0
 endif
 
 " See :help matchparen
