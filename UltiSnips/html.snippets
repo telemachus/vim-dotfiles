@@ -173,12 +173,12 @@ snippet footer "<footer>"
 endsnippet
 
 snippet "f(oot)?n(ote)?ref(erence)?" "<sup><a>1</a></sup>" wr
-&nbsp;<sup id="fnref${1:number}"><a href="#fn$1" rel="footnote">$1</a></sup>$0
+&nbsp;<sup id="fnref${1:number}"><a href="#fn$1">$1</a></sup>$0
 endsnippet
 
 snippet "f(oot)?n(ote)?" "footnote <li>" br
 <li id="fn${1:number}">
-<p>${2:footnote text}&nbsp;<a href="#fnref${1}" rev="footnote">&#8617;</a></p>
+<p>${2:footnote text}&nbsp;<a href="#fnref${1}">&#8617;</a></p>
 </li>$0
 endsnippet
 
