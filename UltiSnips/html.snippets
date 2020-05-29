@@ -1,9 +1,3 @@
-priority -50
-
-###########################################################################
-#                            TextMate Snippets                            #
-###########################################################################
-
 global !p
 def x(snip):
 	if snip.ft.startswith("x"):
@@ -14,89 +8,60 @@ endglobal
 
 snippet doctype "HTML - 5.0 (doctype)" b
 <!DOCTYPE html>
+$0
 
 endsnippet
 
 #############
 # Shortcuts #
 #############
-snippet down "Down (down)"
-&#x2193;
-endsnippet
-
-snippet enter "Enter (enter)"
-&#x2305;
-endsnippet
-
-snippet escape "Escape (escape)"
-&#x238B;
-endsnippet
-
-snippet left "Left (left)"
-&#x2190;
-endsnippet
-
 snippet return "Return (return)"
 &#x21A9;
-endsnippet
-
-snippet right "Right (right)"
-&#x2192;
-endsnippet
-
-snippet shift "Shift (shift)"
-&#x21E7;
-endsnippet
-
-snippet tab "Tab (tab)"
-&#x21E5;
-endsnippet
-
-snippet up "Up (up)"
-&#x2191;
 endsnippet
 
 #############
 # HTML TAGS #
 #############
 snippet a "Link" w
-<a href="${1:http://www.${2:url.com}}"${3: target="_blank"}>${4:Anchor Text}</a>
+<a href="${1:https://example.com}">${2:Link Text}</a>$0
 endsnippet
 
 snippet abbr "<abbr>" w
-<abbr title="$2">$1</abbr>
+<abbr title="$2">$1</abbr>$0
 endsnippet
 
 snippet access "accesskey global attribute"
-accesskey="$1"
+accesskey="$1"$0
 endsnippet
 
 snippet address "<address>" w
-<address>$1</address>
+<address>$1</address>$0
 endsnippet
 
 snippet article "<article>"
 <article>
 	${1:article content}
-</article>
+</article>$0
+endsnippet
+
+snippet section "<section>"
+<section>
+	${1:section content}
+</section>$0
 endsnippet
 
 snippet aside "<aside>"
 <aside>
 	${1:aside content}
-</aside>
+</aside>$0
 endsnippet
 
 snippet b "<b>" w
-<b>$1</b>
-endsnippet
-
-snippet base "HTML <base>" w
-<base href="$1"${2: target="$3"}`!p x(snip)`>
+<b>$1</b>$0
 endsnippet
 
 snippet blockquote "<blockquote>"
-<blockquote>$1</blockquote>
+<blockquote>$1</blockquote>$0
 endsnippet
 
 snippet body "<body>"
@@ -106,55 +71,55 @@ snippet body "<body>"
 endsnippet
 
 snippet br "<br>" w
-<br>$1</br>
+<br>$1</br>$0
 endsnippet
 
 snippet button "<button>"
-<button>$1</button>
+<button>$1</button>$0
 endsnippet
 
 snippet caption "<caption>"
-<caption>$1</caption>
+<caption>$1</caption>$0
 endsnippet
 
 snippet cite "<cite>" w
-<cite>$1</cite>
+<cite>$1</cite>$0
 endsnippet
 
 snippet class "class global attribute"
-class="$1"
+class="$1"$0
 endsnippet
 
 snippet code "<code>" w
-<code>$1</code>
+<code>$1</code>$0
 endsnippet
 
 snippet data "<data>"
-<data value="$2">$1</data>
+<data value="$2">$1</data>$0
 endsnippet
 
 snippet datalist "<datalist>"
 <datalist id="$1" name="$2">
 	opt$3
-</datalist>
+</datalist>$0
 endsnippet
 
 snippet dd "<dd>"
-<dd>$1</dd>
+<dd>$1</dd>$0
 endsnippet
 
 snippet del "<del>" w
-<del cite="$2" datetime="${3:`date '+%Y-%m-%dT%H:%M:%S%:z'`}">$1</del>
+<del cite="$2" datetime="${3:`date '+%Y-%m-%dT%H:%M:%S%:z'`}">$1</del>$0
 endsnippet
 
 snippet dfn "<dfn>" w
-<dfn>$1</dfn>
+<dfn>$1</dfn>$0
 endsnippet
 
 snippet div "<div>" w
 <div>
-	${0:${VISUAL}}
-</div>
+	${1:${VISUAL}}
+</div>$0
 endsnippet
 
 snippet div# "<div> with ID & class" w
@@ -172,15 +137,15 @@ endsnippet
 snippet dl "<dl>"
 <dl>
 	${1:Definition list}
-</dl>
+</dl>$0
 endsnippet
 
 snippet dt "<dt>"
-<dt>$1</dt>
+<dt>$1</dt>$0
 endsnippet
 
 snippet em "<em>" w
-<em>$1</em>
+<em>$1</em>$0
 endsnippet
 
 snippet fieldset "Fieldset" w
@@ -194,18 +159,35 @@ snippet fig "<figure>"
 <figure>
 $1
 <figcaption>$2</figcaption>
-</figure>
+</figure>$0
 endsnippet
 
 snippet figcaption "<figcaption>"
-<figcaption>$1</figcaption>
+<figcaption>$1</figcaption>$0
 endsnippet
 
 snippet footer "<footer>"
 <footer>
 	${1:footer content}
-</footer>
+</footer>$0
 endsnippet
+
+snippet "f(oot)?n(ote)?ref(erence)?" "<sup><a>1</a></sup>" wr
+&nbsp;<sup id="fnref${1:number}"><a href="#fn${1}" rel="footnote">${1}</a></sup>$0
+endsnippet
+
+snippet "f(oot)?n(ote)?" "footnote <li>" br
+<li id="fn${1:number}">
+<p>${2:footnote text}&nbsp;<a href="#fnref${1}" rev="footnote">&#8617;</a></p>
+</li>$0
+endsnippet
+
+snippet "f(oot)?n(ote)?s" "footnotes <section>" br
+<section id="footnotes">
+	<ol>
+		$1
+	</ol>
+</section>$0
 
 snippet form "HTML <form>" w
 <form action="${1:`!p
@@ -216,33 +198,33 @@ snip.rv = (snip.basename or 'unnamed') + '_submit'
 endsnippet
 
 snippet h1 "HTML <h1>" w
-<h1>${0:${VISUAL}}</h1>
+<h1>${0:${VISUAL}}</h1>$0
 endsnippet
 
 snippet h2 "HTML <h2>" w
-<h2>${0:${VISUAL}}</h2>
+<h2>${0:${VISUAL}}</h2>$0
 endsnippet
 
 snippet h3 "HTML <h3>" w
-<h3>${0:${VISUAL}}</h3>
+<h3>${0:${VISUAL}}</h3>$0
 endsnippet
 
 snippet h4 "HTML <h4>" w
-<h4>${0:${VISUAL}}</h4>
+<h4>${0:${VISUAL}}</h4>$0
 endsnippet
 
 snippet h5 "HTML <h5>" w
-<h5>${0:${VISUAL}}</h5>
+<h5>${0:${VISUAL}}</h5>$0
 endsnippet
 
 snippet h6 "HTML <h6>" w
-<h6>${0:${VISUAL}}</h6>
+<h6>${0:${VISUAL}}</h6>$0
 endsnippet
 
 snippet head "HTML <head>"
 <head>
 	<meta charset="utf-8">
-	<title>${1:`!p snip.rv = snip.basename or "Page Title"`}</title>
+	<title>${1:page title}</title>
 	${0:${VISUAL}}
 </head>
 endsnippet
@@ -250,38 +232,33 @@ endsnippet
 snippet header "<header>"
 <header>
 	${1:header content}
-</header>
+</header>$0
 endsnippet
 
 snippet hr "<hr>"
-<hr>
+<hr>$0
 endsnippet
 
-snippet html "HTML basic structure" b
+snippet html "HTML basic structure with the lang attribute" b
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>${1:`!p snip.rv = snip.basename.replace('-', ' ').capitalize()`}</title>
+<html lang="${1:en}">
+		<meta charset="utf-8">
+		<title>${1:title}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="$2">
+		<meta name="author" content="Peter Aronoff">
+		<link rel="stylesheet" href="${3:/css/normalize.css}">
 	</head>
 	<body>
-		${0:body}
+		<header>
+		</header>
+		<main>
+		</main>
+		<footer>
+			<p>&#169; ${4:year} ${5:author}</p>
+		</footer>
 	</body>
 </html>
-endsnippet
-
-snippet htmll "HTML basic structure with the lang attribute" b
-<!DOCTYPE html>
-<html lang="${1:es}">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>${2:`!p snip.rv = snip.basename.replace('-', ' ').capitalize()`}</title>
-	</head>
-	<body>
-		${0:body}
-	</body>
 </html>
 endsnippet
 
@@ -330,7 +307,7 @@ snippet link "HTML <link>" w
 endsnippet
 
 snippet mailto "HTML <a mailto: >" w
-<a href="mailto:${1:joe@example.com}?subject=${2:feedback}">${3:email me}</a>
+<a href="mailto:${1:joe@example.com}?subject=${2:feedback}">${3:email me}</a>$0
 endsnippet
 
 snippet tel "HTML <a tel: >" w
@@ -340,7 +317,7 @@ endsnippet
 snippet main "<main>"
 <main>
 	${1:main content}
-</main>
+</main>$0
 endsnippet
 
 snippet mark "<mark>"
@@ -382,11 +359,11 @@ snippet output "<output>"
 endsnippet
 
 snippet option "Option" w
-<option${1: value="${2:option}"}>${3:$2}</option>
+<option${1: value="${2:option}"}>${3:$2}</option>$0
 endsnippet
 
 snippet p "paragraph" w
-<p>${0:${VISUAL}}</p>
+<p>${1:${VISUAL}}</p>$0
 endsnippet
 
 snippet picture "<picture>"
@@ -535,30 +512,30 @@ endsnippet
 snippet post "Boilerplate for a blog post" b
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>telemachus.me</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="$1">
-    <meta name="author" content="Peter Aronoff">
-    <link rel="stylesheet" href="css/normalize.css">
-  </head>
-  <body>
-    <header class="content">
-      <ul>
-        <li><a href="/" class="bare here">telemachus.me</a></li>
-      </ul>
-    </header>
-    <main class="content">
-      <article>
-        $2
-      </article>
-    </main>
-    <footer class="content">
-      <p>© 2020 Peter Aronoff</p>
-      <p><a class="bare" href="/about">About</a></p>
-    </footer>
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<title>telemachus.me</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="$1">
+		<meta name="author" content="Peter Aronoff">
+		<link rel="stylesheet" href="css/normalize.css">
+	</head>
+	<body>
+		<header class="content">
+			<ul>
+				<li><a href="/" class="bare here">telemachus.me</a></li>
+			</ul>
+		</header>
+		<main class="content">
+			<article>
+				$2
+			</article>
+		</main>
+		<footer class="content">
+			<p>© 2020 Peter Aronoff</p>
+			<p><a class="bare" href="/about">About</a></p>
+		</footer>
+	</body>
 </html>
 endsnippet
 
