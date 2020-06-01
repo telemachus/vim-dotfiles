@@ -1,5 +1,4 @@
 " Set global variables for {neo,}vim and plugins
-" Last changed: 2020-04-06
 
 " See :help ft-sh-syntax
 let g:is_bash = 1
@@ -18,12 +17,12 @@ let g:matchparen_timeout = 20
 let g:matchparen_insert_timeout = 20
 
 " See g:tex_conceal and g:tex_flavor
-let g:tex_conceal=""
-let g:tex_flavor="latex"
+let g:tex_conceal=''
+let g:tex_flavor='latex'
 
 " See :help html-indent.
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
+let g:html_indent_script1 = 'inc'
+let g:html_indent_style1 = 'inc'
 
 let g:gist_clip_command='pbcopy'
 let g:gist_show_privates = 1
@@ -42,6 +41,6 @@ let g:markdown_fenced_languages = ['html', 'python', 'lua', 'bash=sh', 'tex']
 let g:markdown_syntax_conceal = 0
 
 " For https://github.com/SirVer/ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<s-tab>'

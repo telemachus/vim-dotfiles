@@ -1,10 +1,18 @@
+scriptencoding utf-8
 " Soft wrap, please
-setlocal textwidth=0 wrapmargin=0
-setlocal wrap linebreak nolist
-setlocal formatoptions+=1tqln formatoptions-=r formatoptions-=o
+setlocal textwidth=0
+setlocal wrapmargin=0
+setlocal wrap
+setlocal linebreak
+setlocal nolist
+setlocal formatoptions+=1tqln
+setlocal formatoptions-=r
+setlocal formatoptions-=o
 setlocal lazyredraw
 setlocal showbreak=↪
-setlocal ts=8 sw=4 sts=4 expandtab
+setlocal tabstop=8
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal expandtab
 setlocal colorcolumn=""
 setlocal spell
-call textobj#quote#init({'educate': 0})

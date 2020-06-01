@@ -1,3 +1,4 @@
+scriptencoding utf-8
 " Basic settings {{{
 setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 
@@ -5,8 +6,11 @@ setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 setlocal makeprg=latexmk\ -xelatex\ -bibtex\ %\ &&\ open\ build/%:r.pdf
 
 " Soft wrap, please
-setlocal textwidth=0 wrapmargin=0
-setlocal wrap linebreak list
+setlocal textwidth=0
+setlocal wrapmargin=0
+setlocal wrap
+setlocal linebreak
+setlocal list
 setlocal lazyredraw
 setlocal showbreak=↪
 " }}}
@@ -18,11 +22,11 @@ setlocal showbreak=↪
 function! s:TexQuotes()
     let insert = '"'
     let left = getline('.')[col('.')-2]
-    if left =~ '^\(\|\s\)$'
+    if left =~# '^\(\|\s\)$'
         let insert = '``'
-    elseif left == '('
+    elseif left ==# '('
         let insert = '``'
-    elseif left == '\'
+    elseif left ==# '\'
         let insert = '"'
     else 
 	let insert = "''"
@@ -33,11 +37,11 @@ endfunction
 function! s:TexQuote()
     let insert = "'"
     let left = getline('.')[col('.')-2]
-    if left =~ '^\(\|\s\)$'
+    if left =~# '^\(\|\s\)$'
         let insert = '`'
-    elseif left == '('
-        let insert = "`"
-    elseif left == '\'
+    elseif left ==# '('
+        let insert = '`'
+    elseif left ==# '\'
         let insert = "'"
     endif
     return insert

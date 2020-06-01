@@ -1,5 +1,4 @@
 " Custom fold expression
-" Last changed: 2020-04-06
 
 " Code from https://superuser.com/a/990547/907
 " See also the following
@@ -11,7 +10,7 @@ function! NeatFoldText()
   let line = ' ' . substitute(getline(v:foldstart),
         \ '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
   let lines_count = v:foldend - v:foldstart + 1
-  let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
+  let lines_count_text = '| ' . printf('%10s', lines_count . ' lines') . ' |'
   let foldchar = matchstr(&fillchars, 'fold:\zs.')
   let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) .
         \ line, 0, (winwidth(0)*2)/3)

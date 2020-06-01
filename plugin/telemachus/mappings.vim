@@ -1,8 +1,7 @@
 " Mappings for {neo,}vim and various plugins
-" Last change: 2020-04-06
 "
 " mapleader
-let mapleader = ","
+let mapleader = ','
 " Quickly remove highlighting
 nnoremap <silent> <leader><space> :noh<cr>
 
@@ -17,7 +16,6 @@ map Y y$
 nnoremap Q gq
 vnoremap Q gq
 
-" Seriously, why did I do this?
 " '{mark} jumps to start of line with {mark}.
 " `{mark} goes to the line and column where {mark} is set.
 " I guess I thought I would want the `{mark} behavior more often than '{mark}?
@@ -85,7 +83,7 @@ omap ib <Plug>(textobj-sandwich-auto-i)
 xmap ab <Plug>(textobj-sandwich-auto-a)
 omap ab <Plug>(textobj-sandwich-auto-a)
 
-xmap iq <Plug>(textobj-sandwich-query-i)
-omap iq <Plug>(textobj-sandwich-query-i)
-xmap aq <Plug>(textobj-sandwich-query-a)
-omap aq <Plug>(textobj-sandwich-query-a)
+xmap ic <Plug>(textobj-sandwich-query-i)
+omap ic <Plug>(textobj-sandwich-query-i)
+xmap ac <Plug>(textobj-sandwich-query-a)
+omap ac <Plug>(textobj-sandwich-query-a)

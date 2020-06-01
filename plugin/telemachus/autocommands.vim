@@ -1,7 +1,7 @@
 " My autocommands
-" Last changed: 2020-04-06
 "
 " Define an empty augroup, so that I only have to run autocmd! once.
+scriptencoding utf-8
 augroup vim_config
     autocmd!
 augroup END

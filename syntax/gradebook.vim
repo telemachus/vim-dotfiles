@@ -1,10 +1,9 @@
 " Vim syntax file
 " Language:     Gradebook (simple syntax for .gradebook files)
-" Maintainer:   Peter Aronoff <telemachus@arpinum.org>
-" Last Change:  2010-09-06
+" Maintainer:   Peter Aronoff <peter@aronoff.org>
 
 " Quit when a (custom) syntax file was already loaded
-if exists("b:current_syntax")
+if exists('b:current_syntax')
     finish
 endif
 
@@ -23,7 +22,7 @@ syn match gbFirstName '[A-Z][[:alpha:]]\+' nextgroup=gbGrade,gbKeyword skipwhite
 " Comments: single line only, beginning with '//'
 syn match gbComment '\/\/.*$' contains=gbTodo,gbFixme
 
-let b:current_syntax = "gradebook"
+let b:current_syntax = 'gradebook'
 
 hi def link gbKeyword Keyword
 hi def link gbComma Operator

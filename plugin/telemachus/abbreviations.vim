@@ -1,5 +1,4 @@
 " Abbreviations to make my life easier
-" Last changed: 2020-04-06
 
 iab hte the
 iab Hte The
