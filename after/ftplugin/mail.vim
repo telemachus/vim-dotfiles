@@ -6,3 +6,8 @@ setlocal list
 setlocal lazyredraw
 setlocal spell
 setlocal formatprg=par\ -w75
+if b:match_words
+    let b:match_words.=',(:),[:],<:>,“:”,‘:’\(\w\)\@!'
+else
+    let b:match_words='(:),[:],<:>,“:”,‘:’\(\w\)\@!'
+endif

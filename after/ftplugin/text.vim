@@ -4,3 +4,8 @@ setlocal list
 setlocal formatoptions=1tn
 setlocal comments=
 setlocal lazyredraw
+if b:match_words
+    let b:match_words.=',(:),[:],<:>,“:”,‘:’\(\w\)\@!'
+else
+    let b:match_words='(:),[:],<:>,“:”,‘:’\(\w\)\@!'
+endif
