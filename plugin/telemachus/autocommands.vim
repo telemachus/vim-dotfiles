@@ -53,3 +53,9 @@ autocmd vim_config CmdlineLeave /,\? :set nohlsearch
           \ && ! empty(&l:filetype)
           \ && index(split(&eventignore, ','), 'Syntax') != -1 |
           \ unlet! b:current_syntax | endif
+
+" Minimal Zettelkasten
+autocmd vim_config BufNewFile,BufNew,BufRead *.zettelkassten 
+            \ setlocal filetype=help
+autocmd vim_config BufWritePost,FileWritePost *.zettelkassten 
+            \ execute "helptags " . expand("%:p%h")
