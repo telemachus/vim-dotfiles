@@ -1,3 +1,5 @@
+extends blog
+
 global !p
 def x(snip):
 	if snip.ft.startswith("x"):
@@ -12,16 +14,10 @@ $0
 
 endsnippet
 
-#############
-# Shortcuts #
-#############
 snippet return "Return (return)"
 &#x21A9;
 endsnippet
 
-#############
-# HTML TAGS #
-#############
 snippet a "Link" w
 <a href="${1:https://example.com}">${2:Link Text}</a>$0
 endsnippet
@@ -238,29 +234,6 @@ endsnippet
 
 snippet hr "<hr>"
 <hr>$0
-endsnippet
-
-snippet html "HTML basic structure with the lang attribute" b
-<!DOCTYPE html>
-<html lang="${1:en}">
-		<meta charset="utf-8">
-		<title>${1:title}</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="$2">
-		<meta name="author" content="Peter Aronoff">
-		<link rel="stylesheet" href="${3:/css/normalize.css}">
-	</head>
-	<body>
-		<header>
-		</header>
-		<main>
-		</main>
-		<footer>
-			<p>&#169; ${4:year} ${5:author}</p>
-		</footer>
-	</body>
-</html>
-</html>
 endsnippet
 
 snippet i "<i>" w
@@ -507,37 +480,6 @@ endsnippet
 
 snippet wbr "<wbr>" w
 <wbr>$1</wbr>
-endsnippet
-
-# My HTML boilerplate for a post:
-snippet post "Boilerplate for a blog post" b
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>telemachus.me</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="$1">
-		<meta name="author" content="Peter Aronoff">
-		<link rel="stylesheet" href="css/normalize.css">
-	</head>
-	<body>
-		<header class="content">
-			<ul>
-				<li><a href="/" class="bare here">telemachus.me</a></li>
-			</ul>
-		</header>
-		<main class="content">
-			<article>
-				$2
-			</article>
-		</main>
-		<footer class="content">
-			<p>© 2020 Peter Aronoff</p>
-			<p><a class="bare" href="/about">About</a></p>
-		</footer>
-	</body>
-</html>
 endsnippet
 
 # vim:ft=snippets:
