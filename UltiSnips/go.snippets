@@ -1,47 +1,69 @@
 # Snippets for go, mostly from vim-go
 
-# Methods we need to enable endless imports.
-#
-# Thanks to https://vi.stackexchange.com/a/26882/7933
-
 global !p
 
+import re
+
+
+# Thanks to https://github.com/fatih/vim-go/
+# Automatically wrap multiple return values in parentheses
+def return_values(s):
+  s = re.sub("\(.*?\)|\([^)]*$", "", s)
+  return len(s.split(","))
+
+
+def opening_par(snip, pos):
+  if return_values(t[pos]) > 1 and not t[pos].startswith("("):
+    snip.rv = "("
+  else:
+    snip.rv = ""
+
+
+def closing_par(snip, pos):
+  if return_values(t[pos]) > 1:
+    snip.rv = ")"
+  else:
+    snip.rv = ""
+
+
+# Thanks to https://vi.stackexchange.com/a/26882/7933
+# Endless imports
 def delline_exitimport(snip):
-	cursorline = snip.cursor[0]
-	del snip.buffer[cursorline]
+  cursorline = snip.cursor[0]
+  del snip.buffer[cursorline]
 
-	# Add a blank line after import.
-	# NB: cursorline + 1 is the current line number.
-	snip.buffer.append("\n", cursorline+1)
+  # Add a blank line after import.
+  # NB: cursorline + 1 is the current line number.
+  snip.buffer.append("\n", cursorline+1)
 
-	# Place cursor on blank line after import.
-	snip.cursor.set(cursorline+1, 0)
+  # Place cursor on blank line after import.
+  snip.cursor.set(cursorline+1, 0)
 
 
 def in_import(snip):
-	# Get position using searchpairpos('import (','',')','bnWz')
-	beginpos = vim.eval("searchpairpos('^import (','','^)','bnWz')")
-	endpos   = vim.eval("searchpairpos('^import','','^)', 'nWz')")
-	curpos   = snip.cursor.to_vim_cursor()
-	if beginpos == ['0','0'] or endpos == ['0','0']: return False
-	if pos_comp(beginpos, curpos) < 0 and pos_comp(curpos, endpos) < 0:
-		return True
-	else:
-		return False
+  # Get position using searchpairpos('import (','',')','bnWz')
+  beginpos = vim.eval("searchpairpos('^import (','','^)','bnWz')")
+  endpos = vim.eval("searchpairpos('^import','','^)', 'nWz')")
+  curpos = snip.cursor.to_vim_cursor()
+  if beginpos == ['0','0'] or endpos == ['0','0']: return False
+  if pos_comp(beginpos, curpos) < 0 and pos_comp(curpos, endpos) < 0:
+    return True
+  else:
+    return False
 
 def pos_comp(cur1, cur2):
-	# Returns -1 if cur1 is before cur2, +1 if cur1 is after cur2, and 0 if
-	# cur1 == cur2. cur1 and cur2 are lists of the form [row, col].
-	cur1r = int(cur1[0])
-	cur1c = int(cur1[1])
-	cur2r = int(cur2[0])
-	cur2c = int(cur2[1])
-	if   cur1r < cur2r: return -1
-	elif cur1r > cur2r: return  1
-	else:
-		if   cur1c < cur2c: return -1
-		elif cur1c > cur2c: return  1
-		else: return 0
+  # Returns -1 if cur1 is before cur2, +1 if cur1 is after cur2, and 0 if
+  # cur1 == cur2. cur1 and cur2 are lists of the form [row, col].
+  cur1r = int(cur1[0])
+  cur1c = int(cur1[1])
+  cur2r = int(cur2[0])
+  cur2c = int(cur2[1])
+  if cur1r < cur2r: return -1
+  elif cur1r > cur2r: return  1
+  else:
+    if cur1c < cur2c: return -1
+    elif cur1c > cur2c: return  1
+    else: return 0
 
 endglobal
 
@@ -149,8 +171,14 @@ case$0
 }
 endsnippet
 
-snippet func "Function" b
-func ${1:name}(${2:params})${3/(.+)/ /}${3:type} {
+snippet func "func Function(...) [error] { ... }"
+func ${1:name}(${2:params})${3/(.+)/ /}`!p opening_par(snip, 3)`${3:return}`!p closing_par(snip, 3)` {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet meth "func (self Type) Method(...) [error] { ... }"
+func (${1:receiver} ${2:type}) ${5:name}(${4:params})${5/(.+)/ /}`!p opening_par(snip, 5)`${5:return}`!p closing_par(snip, 5)` {
 	${0:${VISUAL}}
 }
 endsnippet
