@@ -178,7 +178,7 @@ func ${1:name}(${2:params})${3/(.+)/ /}`!p opening_par(snip, 3)`${3:return}`!p c
 endsnippet
 
 snippet meth "func (self Type) Method(...) [error] { ... }"
-func (${1:receiver} ${2:type}) ${5:name}(${4:params})${5/(.+)/ /}`!p opening_par(snip, 5)`${5:return}`!p closing_par(snip, 5)` {
+func (${1:receiver} ${2:type}) ${3:name}(${4:params})${5/(.+)/ /}`!p opening_par(snip, 5)`${5:return}`!p closing_par(snip, 5)` {
 	${0:${VISUAL}}
 }
 endsnippet
