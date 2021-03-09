@@ -172,13 +172,13 @@ case$0
 endsnippet
 
 snippet func "func Function(...) [error] { ... }"
-func ${1:name}(${2:params})${3/(.+)/ /}`!p opening_par(snip, 3)`${3:return}`!p closing_par(snip, 3)` {
+func ${1:name}(${2:params})${3/(.+)/ /}`!p opening_par(snip, 3)`$3`!p closing_par(snip, 3)` {
 	${0:${VISUAL}}
 }
 endsnippet
 
 snippet meth "func (self Type) Method(...) [error] { ... }"
-func (${1:receiver} ${2:type}) ${3:name}(${4:params})${5/(.+)/ /}`!p opening_par(snip, 5)`${5:return}`!p closing_par(snip, 5)` {
+func (${1:receiver} ${2:type}) ${3:name}(${4:params})${5/(.+)/ /}`!p opening_par(snip, 5)`$5`!p closing_par(snip, 5)` {
 	${0:${VISUAL}}
 }
 endsnippet
