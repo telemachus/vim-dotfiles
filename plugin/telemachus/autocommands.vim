@@ -64,3 +64,7 @@ autocmd vim_config BufWritePost,FileWritePost *.zettelkassten,*.zk
 autocmd vim_config CursorMoved,CursorMovedI * if &ft == 'python' |
             \ :exe 'setlocal textwidth='.GetPythonTextWidth() |
             \ endif
+
+" Secure gopass
+autocmd vim_config BufNewFile,BufRead /private/**/gopass** setlocal
+            \ noswapfile nobackup noundofile
