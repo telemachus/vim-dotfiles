@@ -19,7 +19,7 @@ snippet return "Return (return)"
 endsnippet
 
 snippet a "Link" w
-<a href="${1:https://example.com}">${2:Link Text}</a>$0
+<a href="${1:`!v getreg('*')`}">${2:${VISUAL:Link text}}</a>$0
 endsnippet
 
 snippet abbr "<abbr>" w
@@ -195,27 +195,27 @@ snip.rv = (snip.basename or 'unnamed') + '_submit'
 endsnippet
 
 snippet h1 "HTML <h1>" w
-<h1>${0:${VISUAL}}</h1>$0
+<h1>${1:${VISUAL}}</h1>$0
 endsnippet
 
 snippet h2 "HTML <h2>" w
-<h2>${0:${VISUAL}}</h2>$0
+<h2>${1:${VISUAL}}</h2>$0
 endsnippet
 
 snippet h3 "HTML <h3>" w
-<h3>${0:${VISUAL}}</h3>$0
+<h3>${1:${VISUAL}}</h3>$0
 endsnippet
 
 snippet h4 "HTML <h4>" w
-<h4>${0:${VISUAL}}</h4>$0
+<h4>${1:${VISUAL}}</h4>$0
 endsnippet
 
 snippet h5 "HTML <h5>" w
-<h5>${0:${VISUAL}}</h5>$0
+<h5>${1:${VISUAL}}</h5>$0
 endsnippet
 
 snippet h6 "HTML <h6>" w
-<h6>${0:${VISUAL}}</h6>$0
+<h6>${1:${VISUAL}}</h6>$0
 endsnippet
 
 snippet head "HTML <head>"
@@ -273,7 +273,7 @@ snippet legend "<legend>"
 endsnippet
 
 snippet li "list item" w
-<li>${0:${VISUAL}}</li>
+<li>${0:${VISUAL}}</li>$0
 endsnippet
 
 snippet link "HTML <link>" w
@@ -318,7 +318,7 @@ endsnippet
 
 snippet ol "<ol>"
 <ol>
-	<li>$1</li>
+	<li>$1</li>$0
 </ol>
 endsnippet
 
