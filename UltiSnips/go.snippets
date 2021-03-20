@@ -107,24 +107,21 @@ endsnippet
 snippet for "for ... { ... }"
 for ${1} {
 	${2:${VISUAL}}
-}
-${0}
+}${0}
 endsnippet
 
 # for integer loop
 snippet fori "for 0..N-1 { ... }"
 for ${1:i} := 0; $1 < ${2:N}; $1++ {
 	${3:${VISUAL}}
-}
-${0}
+}${0}
 endsnippet
 
 # for range loop
 snippet forr "for k, v := range items { ... }"
 for ${2:k}, ${3:v} := range ${1} {
 	${4:${VISUAL}}
-}
-${0}
+}${0}
 endsnippet
 
 # map
@@ -143,32 +140,38 @@ endsnippet
 #
 # Whoever wrote that converted several from
 # https://github.com/AlanQuatermain/go-tmbundle
-snippet /^cons/ "Constants declaration" r
+snippet /^cons/ "constants declaration" r
 const (
 	${1:constant}${2/(.+)/ /}${2:type} = ${0:value}
 )
 endsnippet
 
-snippet /^con/ "Constant declaration" r
+snippet /^con/ "constant declaration" r
 const ${1:name}${2/(.+)/ /}${2:type} = ${0:value}
 endsnippet
 
-snippet iota "Iota constant generator" b
+snippet iota "iota constant generator" b
 const (
 	${1:constant}${2/(.+)/ /}${2:type} = iota
 )
 endsnippet
 
-snippet if "If statement" b
+snippet if "if statement" b
 if ${1:condition}${1/(.+)/ /}{
-	${0:${VISUAL}}
-}
+	${2:${VISUAL}}
+}${0}
 endsnippet
 
 snippet switch "Switch statement" b
 switch ${1:expression}${1/(.+)/ /}{
 case$0
 }
+endsnippet
+
+snippet struct "struct declaration" b
+type ${1:name} struct {
+	${2:${VISUAL}}
+}${0}
 endsnippet
 
 snippet func "func Function(...) [error] { ... }"
@@ -184,17 +187,31 @@ func (${1:receiver} ${2:type}) ${3:name}(${4:params})${5/(.+)/ /}`!p opening_par
 endsnippet
 
 # error handling
-snippet err "Basic error handling" b
+snippet err "simple error handling" b
 if err != nil {
 	${1:FIXME}
-}$0
+}${0}
+endsnippet
+
+# if with inline error
+snippet ife "if with inline error"
+if err := ${1:condition}; err != nil {
+	${2:${VISUAL}}
+}${0}
+endsnippet
+
+# if with inline error and t.Fatalf
+snippet iferrtf "if err: = <something>; err != nil { t.Fatalf }"
+if err := ${1:condition}; err != nil {
+	t.Fatalf(${2})
+}${0}
 endsnippet
 
 # test function
 snippet test "func TestXYZ(t *testing.T) { ... }"
 func Test${1:Function}(t *testing.T) {
-	${0:${VISUAL}}
-}
+	${2:${VISUAL}}
+}${0}
 endsnippet
 
 # vim:ft=snippets:
