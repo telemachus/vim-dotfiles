@@ -78,10 +78,19 @@ snippet : "v := value"
 ${1} := ${0}
 endsnippet
 
+# full variable declaration
+snippet var "var name type = expression"
+var ${1:name}${2/(.+)/ /}${2:type} = ${3:exp}
+endsnippet
+
 # defer
 snippet df "defer someFunction()"
 defer ${1:func}(${2})
 ${0}
+endsnippet
+
+snippet fmt "import fmt" b
+import "fmt"${0}
 endsnippet
 
 # import
