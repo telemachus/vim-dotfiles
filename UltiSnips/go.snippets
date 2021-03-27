@@ -223,4 +223,11 @@ func Test${1:Function}(t *testing.T) {
 }${0}
 endsnippet
 
+# block to check if an item is in a map
+snippet nok "if <key>, ok := <map>[<value>]; !ok { ... }"
+if ${1:key}, ok := ${2:map}[${3:value}]; !ok {
+	${0}
+}
+endsnippet
+
 # vim:ft=snippets:
