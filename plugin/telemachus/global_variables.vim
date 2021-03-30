@@ -44,3 +44,6 @@ let g:markdown_syntax_conceal = 0
 let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+
+" Use goimport for Fmt in go
+let g:gofmt_command="goimports"
