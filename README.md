@@ -1,4 +1,4 @@
-# vim-varia
+# vim-dotfiles
 
 ## What?
 
