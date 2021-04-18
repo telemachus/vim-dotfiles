@@ -1,0 +1,95 @@
+snippet assert "#include <assert.h>" b
+#include <assert.h>
+$0
+endsnippet
+
+snippet errno "#include <errno.h>" b
+#include <errno.h>
+$0
+endsnippet
+
+snippet stdbool "#include <stdbool.h>" b
+#include <stdbool.h>
+$0
+endsnippet
+
+snippet stdio "#include <stdio.h>" b
+#include <stdio.h>
+$0
+endsnippet
+
+snippet stdlib "#include <stdlib.h>" b
+#include <stdlib.h>
+$0
+endsnippet
+
+snippet string "#include <string.h>" b
+#include <string.h>
+$0
+endsnippet
+
+snippet time "#include <time.h>" b
+#include <time.h>
+$0
+endsnippet
+
+snippet uchar "#include <uchar.h>" b
+#include <uchar.h>
+$0
+endsnippet
+
+snippet wchar "#include <wchar.h>" b
+#include <whchar.h>
+$0
+endsnippet
+
+snippet Inc "#include 'filename'" b
+#include "${1:`!p snip.rv = snip.basename`}.h"$0
+endsnippet
+
+snippet guard "#ifndef" b
+#ifndef ${1:`!p snip.rv = snip.basename.upper()`_H}
+#define $1
+
+$2
+
+#endif$0
+endsnippet
+
+snippet main "main(int argc, char *argv[])"
+int
+main(int argc, char *argv[])
+{
+	${0}
+	return EXIT_SUCCESS;
+}
+endsnippet
+
+snippet mainv "main(void)"
+int
+main(void)
+{
+	${0}
+	return EXIT_SUCCESS;
+}
+endsnippet
+
+snippet if "if (...) {...}"
+if ($1) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet el "else (...) {...}"
+else {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet elif "else if (...) {...}"
+else if {
+	${0:${VISUAL}}
+}
+endsnippet
+
+# vim:ft=snippets:
