@@ -241,8 +241,15 @@ func ${1:name}(t testing.TB) {
 }${0}
 endsnippet
 
-# call t.Run
-snippet trun "t.Run(message, functionName)"
+# call t.Run with an anonymous function
+snippet trun "t.Run(message, func(t *testing.T) { ... })"
+t.Run(${1:message}, func(t *testing.T) {
+	${2:test code}
+})${0}
+endsnippet
+
+# call t.Run with a named function
+snippet trunn "t.Run(message, functionName)"
 t.Run("${1:message}", ${2:funcName})${0}
 endsnippet
 
@@ -258,7 +265,7 @@ endsnippet
 # actual != expected
 snippet nexp "if actual != expected { t.Errorf(...) }"
 if actual != expected {
-	t.Errorf("expected %${1:q}; actual %${2:q}", expected, actual)
+	t.Errorf("expected %${1:q}; actual %${2:q}${3:; more}", expected, actual${4:, more})
 }${0}
 endsnippet
 
