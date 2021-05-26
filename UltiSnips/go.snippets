@@ -244,7 +244,7 @@ endsnippet
 # call t.Run with an anonymous function
 snippet trun "t.Run(message, func(t *testing.T) { ... })"
 t.Run(${1:message}, func(t *testing.T) {
-	${2:test code}
+	${2:${VISUAL}}
 })${0}
 endsnippet
 
