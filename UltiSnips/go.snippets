@@ -243,7 +243,7 @@ endsnippet
 
 # call t.Run with an anonymous function
 snippet trun "t.Run(message, func(t *testing.T) { ... })"
-t.Run(${1:message}, func(t *testing.T) {
+t.Run("${1:message}", func(t *testing.T) {
 	${2:${VISUAL}}
 })${0}
 endsnippet
@@ -262,9 +262,9 @@ func Benchmark${1:Name}(b *testing.B) {
 }${0}
 endsnippet
 
-# actual != expected
+# expected != actual
 snippet nexp "if actual != expected { t.Errorf(...) }"
-if actual != expected {
+if expected != actual {
 	t.Errorf("expected %${1:q}; actual %${2:q}${3:; more}", expected, actual${4:, more})
 }${0}
 endsnippet
