@@ -243,14 +243,14 @@ endsnippet
 
 # call t.Run with an anonymous function
 snippet trun "t.Run(message, func(t *testing.T) { ... })"
-t.Run("${1:message}", func(t *testing.T) {
-	${2:${VISUAL}}
+t.Run(${1:"${2:message}"}, func(t *testing.T) {
+	${3:${VISUAL}}
 })${0}
 endsnippet
 
 # call t.Run with a named function
 snippet trunn "t.Run(message, functionName)"
-t.Run("${1:message}", ${2:funcName})${0}
+t.Run(${1:"${2:message}"}, ${3:funcName})${0}
 endsnippet
 
 # benchmark function
