@@ -200,7 +200,7 @@ hi def link     goTodo              Todo
 syn match goVarArgs /\.\.\./
 
 " Operators;
-if 1
+if 0
   " match single-char operators:          - + % < > ! & | ^ * =
   " and corresponding two-char operators: -= += %= <= >= != &= |= ^= *= ==
   syn match goOperator /[-+%<>!&|^*=]=\?/
@@ -219,13 +219,13 @@ endif
 hi def link     goOperator          Operator
 
 " Functions;
-if 1
+if 0
   syn match goDeclaration       /\<func\>/ nextgroup=goReceiver,goFunction,goSimpleParams skipwhite skipnl
   syn match goReceiverVar       /\w\+\ze\s\+\%(\w\|\*\)/ nextgroup=goPointerOperator,goReceiverType skipwhite skipnl contained
   syn match goPointerOperator   /\*/ nextgroup=goReceiverType contained skipwhite skipnl
   syn match goFunction          /\w\+/ nextgroup=goSimpleParams contained skipwhite skipnl
   syn match goReceiverType      /\w\+/ contained
-  if 1
+  if 0
     syn match goSimpleParams      /(\%(\w\|\_s\|[*\.\[\],\{\}<>-]\)*)/ contained contains=goParamName,goType nextgroup=goFunctionReturn skipwhite skipnl
     syn match goFunctionReturn   /(\%(\w\|\_s\|[*\.\[\],\{\}<>-]\)*)/ contained contains=goParamName,goType skipwhite skipnl
     syn match goParamName        /\w\+\%(\s*,\s*\w\+\)*\ze\s\+\%(\w\|\.\|\*\|\[\)/ contained nextgroup=goParamType skipwhite skipnl
@@ -241,13 +241,13 @@ endif
 hi def link     goFunction          Function
 
 " Function calls;
-if 1
+if 0
   syn match goFunctionCall      /\w\+\ze(/ contains=goBuiltins,goDeclaration
 endif
 hi def link     goFunctionCall      Type
 
 " Fields;
-if 1
+if 0
   " 1. Match a sequence of word characters coming after a '.'
   " 2. Require the following but dont match it: ( \@= see :h E59)
   "    - The symbols: / - + * %   OR
@@ -266,7 +266,7 @@ endif
 hi def link    goField              Identifier
 
 " Structs & Interfaces;
-if 1
+if 0
   syn match goTypeConstructor      /\<\w\+{\@=/
   syn match goTypeDecl             /\<type\>/ nextgroup=goTypeName skipwhite skipnl
   syn match goTypeName             /\w\+/ contained nextgroup=goDeclType skipwhite skipnl
@@ -282,19 +282,19 @@ hi def link     goTypeDecl          Keyword
 hi def link     goDeclType          Keyword
 
 " Variable Assignments
-if 1
+if 0
   syn match goVarAssign /\v[_.[:alnum:]]+(,\s*[_.[:alnum:]]+)*\ze(\s*([-^+|^\/%&]|\*|\<\<|\>\>|\&\^)?\=[^=])/
   hi def link   goVarAssign         Special
 endif
 
 " Variable Declarations
-if 1
+if 0
   syn match goVarDefs /\v\w+(,\s*\w+)*\ze(\s*:\=)/
   hi def link   goVarDefs           Special
 endif
 
 " Build Constraints
-if 1
+if 0
   syn match   goBuildKeyword      display contained "+build"
   " Highlight the known values of GOOS, GOARCH, and other +build options.
   syn keyword goBuildDirectives   contained
@@ -316,7 +316,7 @@ if 1
   hi def link goBuildKeyword      PreProc
 endif
 
-if 1
+if 0
   " One or more line comments that are followed immediately by a "package"
   " declaration are treated like package documentation, so these must be
   " matched as comments to avoid looking like working build constraints.
@@ -367,7 +367,7 @@ function! s:hi()
   hi def      goCoverageUncover    ctermfg=red guifg=#F92672
 
   " :GoDebug commands
-  if 1
+  if 0
     hi def GoDebugBreakpoint term=standout ctermbg=117 ctermfg=0 guibg=#BAD4F5  guifg=Black
     hi def GoDebugCurrent term=reverse  ctermbg=12  ctermfg=7 guibg=DarkBlue guifg=White
   endif
