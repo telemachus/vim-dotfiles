@@ -150,7 +150,7 @@ hi def link     goImaginaryFloat    Float
 syn match goSpaceError display "\%(\[\]\)\@<=\s\+"
 
 " Spacing errors around the 'chan' keyword
-if true
+if 1
   " receive-only annotation on chan type
   "
   " \(\<chan\>\)\@<!<-  (only pick arrow when it doesn't come after a chan)
@@ -168,7 +168,7 @@ if true
 endif
 
 " Extra types commonly seen
-if true
+if 1
   syn match goExtraType /\<bytes\.\%(Buffer\)\>/
   syn match goExtraType /\<context\.\%(Context\)\>/
   syn match goExtraType /\<io\.\%(Reader\|ReadSeeker\|ReadWriter\|ReadCloser\|ReadWriteCloser\|Writer\|WriteCloser\|Seeker\)\>/
@@ -177,12 +177,12 @@ if true
 endif
 
 " Space-tab error
-if false
+if 1
   syn match goSpaceError display " \+\t"me=e-1
 endif
 
 " Trailing white space error
-if true
+if 1
   syn match goSpaceError display excludenl "\s\+$"
 endif
 
@@ -200,7 +200,7 @@ hi def link     goTodo              Todo
 syn match goVarArgs /\.\.\./
 
 " Operators;
-if true
+if 1
   " match single-char operators:          - + % < > ! & | ^ * =
   " and corresponding two-char operators: -= += %= <= >= != &= |= ^= *= ==
   syn match goOperator /[-+%<>!&|^*=]=\?/
@@ -219,7 +219,7 @@ endif
 hi def link     goOperator          Operator
 
 " Functions;
-if true
+if 1
   syn match goDeclaration       /\<func\>/ nextgroup=goReceiver,goFunction,goSimpleParams skipwhite skipnl
   syn match goReceiverVar       /\w\+\ze\s\+\%(\w\|\*\)/ nextgroup=goPointerOperator,goReceiverType skipwhite skipnl contained
   syn match goPointerOperator   /\*/ nextgroup=goReceiverType contained skipwhite skipnl
@@ -241,7 +241,7 @@ endif
 hi def link     goFunction          Function
 
 " Function calls;
-if true
+if 1
   syn match goFunctionCall      /\w\+\ze(/ contains=goBuiltins,goDeclaration
 endif
 hi def link     goFunctionCall      Type
