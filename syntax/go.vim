@@ -61,22 +61,10 @@ syn keyword     goTodo              contained TODO FIXME XXX BUG
 syn cluster     goCommentGroup      contains=goTodo
 
 syn region      goComment           start="//" end="$" contains=goGenerate,@goCommentGroup,@Spell
-if go#config#FoldEnable('comment')
-  syn region    goComment           start="/\*" end="\*/" contains=@goCommentGroup,@Spell fold
-  syn match     goComment           "\v(^\s*//.*\n)+" contains=goGenerate,@goCommentGroup,@Spell fold
-else
-  syn region    goComment           start="/\*" end="\*/" contains=@goCommentGroup,@Spell
-endif
+syn region      goComment           start="/\*" end="\*/" contains=@goCommentGroup,@Spell
 
 hi def link     goComment           Comment
 hi def link     goTodo              Todo
-
-if go#config#HighlightGenerateTags()
-  syn match       goGenerateVariables contained /\%(\$GOARCH\|\$GOOS\|\$GOFILE\|\$GOLINE\|\$GOPACKAGE\|\$DOLLAR\)\>/
-  syn region      goGenerate          start="^\s*//go:generate" end="$" contains=goGenerateVariables
-  hi def link     goGenerate          PreProc
-  hi def link     goGenerateVariables Special
-endif
 
 " Go escapes
 syn match       goEscapeOctal       display contained "\\[0-7]\{3}"
@@ -96,30 +84,8 @@ hi def link     goEscapeError       Error
 
 " Strings and their contents
 syn cluster     goStringGroup       contains=goEscapeOctal,goEscapeC,goEscapeX,goEscapeU,goEscapeBigU,goEscapeError
-if go#config#HighlightStringSpellcheck()
-  syn region      goString            start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=@goStringGroup,@Spell
-  syn region      goRawString         start=+`+ end=+`+ contains=@Spell
-else
-  syn region      goString            start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=@goStringGroup
-  syn region      goRawString         start=+`+ end=+`+
-endif
-
-if go#config#HighlightFormatStrings()
-  " [n] notation is valid for specifying explicit argument indexes
-  " 1. Match a literal % not preceded by a %.
-  " 2. Match any number of -, #, 0, space, or +
-  " 3. Match * or [n]* or any number or nothing before a .
-  " 4. Match * or [n]* or any number or nothing after a .
-  " 5. Match [n] or nothing before a verb
-  " 6. Match a formatting verb
-  syn match       goFormatSpecifier   /\
-        \%([^%]\%(%%\)*\)\
-        \@<=%[-#0 +]*\
-        \%(\%(\%(\[\d\+\]\)\=\*\)\|\d\+\)\=\
-        \%(\.\%(\%(\%(\[\d\+\]\)\=\*\)\|\d\+\)\=\)\=\
-        \%(\[\d\+\]\)\=[vTtbcdoqxXUeEfFgGspw]/ contained containedin=goString,goRawString
-  hi def link     goFormatSpecifier   goSpecialString
-endif
+syn region      goString            start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=@goStringGroup
+syn region      goRawString         start=+`+ end=+`+
 
 hi def link     goString            String
 hi def link     goRawString         String
@@ -132,31 +98,16 @@ hi def link     goCharacter         Character
 
 " Regions
 syn region      goParen             start='(' end=')' transparent
-if go#config#FoldEnable('block')
-  syn region    goBlock             start="{" end="}" transparent fold
-else
-  syn region    goBlock             start="{" end="}" transparent
-endif
+syn region      goBlock             start="{" end="}" transparent
 
 " import
-if go#config#FoldEnable('import')
-  syn region    goImport            start='import (' end=')' transparent fold contains=goImport,goString,goComment
-else
-  syn region    goImport            start='import (' end=')' transparent contains=goImport,goString,goComment
-endif
+syn region    goImport            start='import (' end=')' transparent contains=goImport,goString,goComment
 
 " var, const
-if go#config#FoldEnable('varconst')
-  syn region    goVar               start='var ('   end='^\s*)$' transparent fold
+syn region    goVar               start='var ('   end='^\s*)$' transparent
+            \ contains=ALLBUT,goParen,goBlock,goFunction,goTypeName,goReceiverType,goReceiverVar,goParamName,goParamType,goSimpleParams,goPointerOperator
+syn region    goConst             start='const (' end='^\s*)$' transparent
                         \ contains=ALLBUT,goParen,goBlock,goFunction,goTypeName,goReceiverType,goReceiverVar,goParamName,goParamType,goSimpleParams,goPointerOperator
-  syn region    goConst             start='const (' end='^\s*)$' transparent fold
-                        \ contains=ALLBUT,goParen,goBlock,goFunction,goTypeName,goReceiverType,goReceiverVar,goParamName,goParamType,goSimpleParams,goPointerOperator
-else
-  syn region    goVar               start='var ('   end='^\s*)$' transparent
-                        \ contains=ALLBUT,goParen,goBlock,goFunction,goTypeName,goReceiverType,goReceiverVar,goParamName,goParamType,goSimpleParams,goPointerOperator
-  syn region    goConst             start='const (' end='^\s*)$' transparent
-                        \ contains=ALLBUT,goParen,goBlock,goFunction,goTypeName,goReceiverType,goReceiverVar,goParamName,goParamType,goSimpleParams,goPointerOperator
-endif
 
 " Single-line var, const, and import.
 syn match       goSingleDecl        /\%(import\|var\|const\) [^(]\@=/ contains=goImport,goVar,goConst
@@ -196,13 +147,10 @@ syn match       goImaginaryFloat    "\<-\=\.\d\+\%([Ee][-+]\=\d\+\)\=i\>"
 hi def link     goImaginary         Number
 hi def link     goImaginaryFloat    Float
 
-" Spaces after "[]"
-if go#config#HighlightArrayWhitespaceError()
-  syn match goSpaceError display "\%(\[\]\)\@<=\s\+"
-endif
+syn match goSpaceError display "\%(\[\]\)\@<=\s\+"
 
 " Spacing errors around the 'chan' keyword
-if go#config#HighlightChanWhitespaceError()
+if true
   " receive-only annotation on chan type
   "
   " \(\<chan\>\)\@<!<-  (only pick arrow when it doesn't come after a chan)
@@ -220,7 +168,7 @@ if go#config#HighlightChanWhitespaceError()
 endif
 
 " Extra types commonly seen
-if go#config#HighlightExtraTypes()
+if true
   syn match goExtraType /\<bytes\.\%(Buffer\)\>/
   syn match goExtraType /\<context\.\%(Context\)\>/
   syn match goExtraType /\<io\.\%(Reader\|ReadSeeker\|ReadWriter\|ReadCloser\|ReadWriteCloser\|Writer\|WriteCloser\|Seeker\)\>/
@@ -229,12 +177,12 @@ if go#config#HighlightExtraTypes()
 endif
 
 " Space-tab error
-if go#config#HighlightSpaceTabError()
+if false
   syn match goSpaceError display " \+\t"me=e-1
 endif
 
 " Trailing white space error
-if go#config#HighlightTrailingWhitespaceError()
+if true
   syn match goSpaceError display excludenl "\s\+$"
 endif
 
@@ -252,7 +200,7 @@ hi def link     goTodo              Todo
 syn match goVarArgs /\.\.\./
 
 " Operators;
-if go#config#HighlightOperators()
+if true
   " match single-char operators:          - + % < > ! & | ^ * =
   " and corresponding two-char operators: -= += %= <= >= != &= |= ^= *= ==
   syn match goOperator /[-+%<>!&|^*=]=\?/
@@ -271,7 +219,7 @@ endif
 hi def link     goOperator          Operator
 
 " Functions;
-if go#config#HighlightFunctions() || go#config#HighlightFunctionParameters()
+if true
   syn match goDeclaration       /\<func\>/ nextgroup=goReceiver,goFunction,goSimpleParams skipwhite skipnl
   syn match goReceiverVar       /\w\+\ze\s\+\%(\w\|\*\)/ nextgroup=goPointerOperator,goReceiverType skipwhite skipnl contained
   syn match goPointerOperator   /\*/ nextgroup=goReceiverType contained skipwhite skipnl
@@ -293,13 +241,13 @@ endif
 hi def link     goFunction          Function
 
 " Function calls;
-if go#config#HighlightFunctionCalls()
+if true
   syn match goFunctionCall      /\w\+\ze(/ contains=goBuiltins,goDeclaration
 endif
 hi def link     goFunctionCall      Type
 
 " Fields;
-if go#config#HighlightFields()
+if true
   " 1. Match a sequence of word characters coming after a '.'
   " 2. Require the following but dont match it: ( \@= see :h E59)
   "    - The symbols: / - + * %   OR
@@ -318,7 +266,7 @@ endif
 hi def link    goField              Identifier
 
 " Structs & Interfaces;
-if go#config#HighlightTypes()
+if true
   syn match goTypeConstructor      /\<\w\+{\@=/
   syn match goTypeDecl             /\<type\>/ nextgroup=goTypeName skipwhite skipnl
   syn match goTypeName             /\w\+/ contained nextgroup=goDeclType skipwhite skipnl
@@ -334,19 +282,19 @@ hi def link     goTypeDecl          Keyword
 hi def link     goDeclType          Keyword
 
 " Variable Assignments
-if go#config#HighlightVariableAssignments()
+if true
   syn match goVarAssign /\v[_.[:alnum:]]+(,\s*[_.[:alnum:]]+)*\ze(\s*([-^+|^\/%&]|\*|\<\<|\>\>|\&\^)?\=[^=])/
   hi def link   goVarAssign         Special
 endif
 
 " Variable Declarations
-if go#config#HighlightVariableDeclarations()
+if true
   syn match goVarDefs /\v\w+(,\s*\w+)*\ze(\s*:\=)/
   hi def link   goVarDefs           Special
 endif
 
 " Build Constraints
-if go#config#HighlightBuildConstraints()
+if true
   syn match   goBuildKeyword      display contained "+build"
   " Highlight the known values of GOOS, GOARCH, and other +build options.
   syn keyword goBuildDirectives   contained
@@ -368,7 +316,7 @@ if go#config#HighlightBuildConstraints()
   hi def link goBuildKeyword      PreProc
 endif
 
-if go#config#HighlightBuildConstraints() || go#config#FoldEnable('package_comment')
+if true
   " One or more line comments that are followed immediately by a "package"
   " declaration are treated like package documentation, so these must be
   " matched as comments to avoid looking like working build constraints.
@@ -421,7 +369,7 @@ function! s:hi()
   hi def      goCoverageUncover    ctermfg=red guifg=#F92672
 
   " :GoDebug commands
-  if go#config#HighlightDebug()
+  if true
     hi def GoDebugBreakpoint term=standout ctermbg=117 ctermfg=0 guibg=#BAD4F5  guifg=Black
     hi def GoDebugCurrent term=reverse  ctermbg=12  ctermfg=7 guibg=DarkBlue guifg=White
   endif
