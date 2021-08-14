@@ -247,7 +247,7 @@ endif
 hi def link     goFunctionCall      Type
 
 " Fields;
-if true
+if 1
   " 1. Match a sequence of word characters coming after a '.'
   " 2. Require the following but dont match it: ( \@= see :h E59)
   "    - The symbols: / - + * %   OR
@@ -266,7 +266,7 @@ endif
 hi def link    goField              Identifier
 
 " Structs & Interfaces;
-if true
+if 1
   syn match goTypeConstructor      /\<\w\+{\@=/
   syn match goTypeDecl             /\<type\>/ nextgroup=goTypeName skipwhite skipnl
   syn match goTypeName             /\w\+/ contained nextgroup=goDeclType skipwhite skipnl
@@ -282,19 +282,19 @@ hi def link     goTypeDecl          Keyword
 hi def link     goDeclType          Keyword
 
 " Variable Assignments
-if true
+if 1
   syn match goVarAssign /\v[_.[:alnum:]]+(,\s*[_.[:alnum:]]+)*\ze(\s*([-^+|^\/%&]|\*|\<\<|\>\>|\&\^)?\=[^=])/
   hi def link   goVarAssign         Special
 endif
 
 " Variable Declarations
-if true
+if 1
   syn match goVarDefs /\v\w+(,\s*\w+)*\ze(\s*:\=)/
   hi def link   goVarDefs           Special
 endif
 
 " Build Constraints
-if true
+if 1
   syn match   goBuildKeyword      display contained "+build"
   " Highlight the known values of GOOS, GOARCH, and other +build options.
   syn keyword goBuildDirectives   contained
@@ -316,7 +316,7 @@ if true
   hi def link goBuildKeyword      PreProc
 endif
 
-if true
+if 1
   " One or more line comments that are followed immediately by a "package"
   " declaration are treated like package documentation, so these must be
   " matched as comments to avoid looking like working build constraints.
@@ -369,7 +369,7 @@ function! s:hi()
   hi def      goCoverageUncover    ctermfg=red guifg=#F92672
 
   " :GoDebug commands
-  if true
+  if 1
     hi def GoDebugBreakpoint term=standout ctermbg=117 ctermfg=0 guibg=#BAD4F5  guifg=Black
     hi def GoDebugCurrent term=reverse  ctermbg=12  ctermfg=7 guibg=DarkBlue guifg=White
   endif
