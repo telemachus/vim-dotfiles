@@ -1,3 +1,2 @@
-augroup gradebook
-    au! BufNewFile,BufRead *.gradebook,*.gdbk  setfiletype json
-augroup END
+" au BufRead,BufNewFile *.gradebook setfiletype gradebook
+au BufRead,BufNewFile *.gradebook setfiletype json
