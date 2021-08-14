@@ -225,7 +225,7 @@ if 1
   syn match goPointerOperator   /\*/ nextgroup=goReceiverType contained skipwhite skipnl
   syn match goFunction          /\w\+/ nextgroup=goSimpleParams contained skipwhite skipnl
   syn match goReceiverType      /\w\+/ contained
-  if go#config#HighlightFunctionParameters()
+  if 1
     syn match goSimpleParams      /(\%(\w\|\_s\|[*\.\[\],\{\}<>-]\)*)/ contained contains=goParamName,goType nextgroup=goFunctionReturn skipwhite skipnl
     syn match goFunctionReturn   /(\%(\w\|\_s\|[*\.\[\],\{\}<>-]\)*)/ contained contains=goParamName,goType skipwhite skipnl
     syn match goParamName        /\w\+\%(\s*,\s*\w\+\)*\ze\s\+\%(\w\|\.\|\*\|\[\)/ contained nextgroup=goParamType skipwhite skipnl
@@ -325,11 +325,9 @@ if 1
   exe 'syn region  goPackageComment    start=/\v(\/\/.*\n)+\s*package/'
         \ . ' end=/\v\n\s*package/he=e-7,me=e-7,re=e-7'
         \ . ' contains=@goCommentGroup,@Spell'
-        \ . (go#config#FoldEnable('package_comment') ? ' fold' : '')
   exe 'syn region  goPackageComment    start=/\v^\s*\/\*.*\n(.*\n)*\s*\*\/\npackage/'
         \ . ' end=/\v\*\/\n\s*package/he=e-7,me=e-7,re=e-7'
         \ . ' contains=@goCommentGroup,@Spell'
-        \ . (go#config#FoldEnable('package_comment') ? ' fold' : '')
   hi def link goPackageComment    Comment
 endif
 
