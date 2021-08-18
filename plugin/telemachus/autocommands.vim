@@ -68,3 +68,7 @@ autocmd vim_config CursorMoved,CursorMovedI * if &ft == 'python' |
 " Secure gopass
 autocmd vim_config BufNewFile,BufRead /private/**/gopass** setlocal
             \ noswapfile nobackup noundofile
+
+" Clean up mails
+autocmd vim_config VimEnter .mutt/tmp/neomutt*
+            \ :call IsReply()
