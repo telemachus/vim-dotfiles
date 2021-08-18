@@ -105,8 +105,8 @@ function! IsReply()
         :%!par w72q
         :%s/^.\+\ze\n\(>*$\)\@!/\0 /e
         :%s/^>*\zs\s\+$//e
-        :1
+        :G
         :put! =\"\n\n\"
-        :1
+        :G
     endif
 endfunction
