@@ -99,9 +99,23 @@ endfunction
 
 command! -bar Helptags :call BuildDocs()
 
-function! IsReply()
+function! Reply()
     if line('$') > 1
         normal Go
         normal G
     endif
 endfunction
+
+command! -bar Reply :call IsReply()
+
+function! CleanReply()
+    if line('$') > 1
+        :%!par w72q
+        :%s/^.\+\ze\n\(>*$\)\@!/\0 /e
+        :%s/^>*\zs\s\+$/>/e
+        normal Go
+        normal G
+    endif
+endfunction
+
+command! -bar CleanReply :call CleanReply()
