@@ -1,5 +1,5 @@
 setlocal comments=
-setlocal formatoptions=1tnaw
+setlocal formatoptions=1tnw
 setlocal textwidth=72
 setlocal colorcolumn=-2
 setlocal list

@@ -101,12 +101,7 @@ command! -bar Helptags :call BuildDocs()
 
 function! IsReply()
     if line('$') > 1
-        :g/^>\s\=--\s\=$/,$ delete
-        :%!par w72q 2>/dev/null
-        :%s/^.\+\ze\n\(>*$\)\@!/\0 /e
-        :%s/^>*\zs\s\+$//e
-        :$
-        :put! =\"\n\n\"
-        :$
+        normal Go
+        normal G
     endif
 endfunction

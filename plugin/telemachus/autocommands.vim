@@ -70,5 +70,5 @@ autocmd vim_config BufNewFile,BufRead /private/**/gopass** setlocal
             \ noswapfile nobackup noundofile
 
 " Clean up mails
-autocmd vim_config BufNewFile,BufNew,BufRead *neomutt*
+autocmd vim_config FileType mail
             \ :call IsReply()
