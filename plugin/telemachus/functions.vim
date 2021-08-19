@@ -106,7 +106,7 @@ function! Reply()
     endif
 endfunction
 
-command! -bar Reply :call IsReply()
+command! -bar Reply :silent call Reply()
 
 function! CleanReply()
     if line('$') > 1
@@ -118,4 +118,4 @@ function! CleanReply()
     endif
 endfunction
 
-command! -bar CleanReply :call CleanReply()
+command! -bar CleanReply :silent call CleanReply()
