@@ -101,8 +101,8 @@ command! -bar Helptags :call BuildDocs()
 
 function! Reply()
     if line('$') > 1
-        normal Go
-        normal G
+        call append(line('$'), ["", ""])
+        call setpos('.', [0, line('$'), 0, 0])
     endif
 endfunction
 
@@ -110,11 +110,11 @@ command! -bar Reply :silent call Reply()
 
 function! CleanReply()
     if line('$') > 1
-        :%!par w72q
-        :%s/^.\+\ze\n\(>*$\)\@!/\0 /e
-        :%s/^>*\zs\s\+$/>/e
-        normal Go
-        normal G
+        :2,$!par w72q
+        :2,$s/^.\+\ze\n\(>*$\)\@!/\0 /e
+        :2,$s/^>*\zs\s\+$//e
+        call append(line('$'), ["", ""])
+        call setpos('.', [0, line('$'), 0, 0])
     endif
 endfunction
 
