@@ -240,7 +240,7 @@ endsnippet
 
 # test function
 snippet test "func TestXYZ(t *testing.T) { ... }"
-func Test${1:Function}(t *testing.T) {
+func Test${1:Something}(t *testing.T) {
 	${2:${VISUAL}}
 }
 endsnippet
@@ -267,7 +267,7 @@ endsnippet
 
 # benchmark function
 snippet bench "func BenchmarkXYZ(b *testing.B) { ... }"
-func Benchmark${1:Name}(b *testing.B) {
+func Benchmark${1:Something}(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		${2:${VISUAL}}
 	}
@@ -276,15 +276,22 @@ endsnippet
 
 # expected != actual
 snippet nexp "if actual != expected { t.Errorf(...) }"
-if expected != actual {
-	t.Errorf("expected %${1:q}; actual %${2:q}${3:; more}", expected, actual${4:, more})
+if ${1:expected} != ${2:actual} {
+	t.Errorf("expected %${3:q}; actual %${4:q}${5:; more}", ${1}, ${2}${6:, more})
 }
 endsnippet
 
-# block to check if an item is in a map
+# do something when a key is not present in a map
 snippet nok "if <key>, ok := <map>[<value>]; !ok { ... }"
 if ${1:key}, ok := ${2:map}[${3:value}]; !ok {
-	${0}
+	${4}
+}
+endsnippet
+
+# do something if a key is present in a map
+snippet ok "if <key>, ok := <map>[<value>]; ok { ... }"
+if ${1:key}, ok := ${2:map}[${3:value}]; ok {
+	${4}
 }
 endsnippet
 
