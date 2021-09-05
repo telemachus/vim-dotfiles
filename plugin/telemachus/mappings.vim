@@ -69,7 +69,7 @@ map <silent> <leader>nm <Plug>MacronsOff
 nmap s <Nop>
 xmap s <Nop>
 
-" yank the rest of the line into the clipboard
+" yank the rest of the line or the entire line into the clipboard
 nnoremap <silent> <leader>y "+y$
 nnoremap <silent> <leader>Y :call LineToClipboard()<CR>
 
@@ -84,8 +84,9 @@ if exists("g:loaded_sandwich")
     xmap ab <Plug>(textobj-sandwich-auto-a)
     omap ab <Plug>(textobj-sandwich-auto-a)
 
-    xmap iq <Plug>(textobj-sandwich-query-i)
-    omap iq <Plug>(textobj-sandwich-query-i)
-    xmap aq <Plug>(textobj-sandwich-query-a)
-    omap aq <Plug>(textobj-sandwich-query-a)
+    " I never seem to use these.
+    " xmap iq <Plug>(textobj-sandwich-query-i)
+    " omap iq <Plug>(textobj-sandwich-query-i)
+    " xmap aq <Plug>(textobj-sandwich-query-a)
+    " omap aq <Plug>(textobj-sandwich-query-a)
 endif
