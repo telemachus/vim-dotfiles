@@ -28,42 +28,42 @@ def closing_par(snip, pos):
 
 # Thanks to https://vi.stackexchange.com/a/26882/7933
 # Endless imports
-def delline_exitimport(snip):
-  cursorline = snip.cursor[0]
-  del snip.buffer[cursorline]
+# def delline_exitimport(snip):
+#   cursorline = snip.cursor[0]
+#   del snip.buffer[cursorline]
 
-  # Add a blank line after import.
-  # NB: cursorline + 1 is the current line number.
-  snip.buffer.append("\n", cursorline+1)
+#   # Add a blank line after import.
+#   # NB: cursorline + 1 is the current line number.
+#   snip.buffer.append("\n", cursorline+1)
 
-  # Place cursor on blank line after import.
-  snip.cursor.set(cursorline+1, 0)
+#   # Place cursor on blank line after import.
+#   snip.cursor.set(cursorline+1, 0)
 
 
-def in_import(snip):
-  # Get position using searchpairpos('import (','',')','bnWz')
-  beginpos = vim.eval("searchpairpos('^import (','','^)','bnWz')")
-  endpos = vim.eval("searchpairpos('^import','','^)', 'nWz')")
-  curpos = snip.cursor.to_vim_cursor()
-  if beginpos == ['0','0'] or endpos == ['0','0']: return False
-  if pos_comp(beginpos, curpos) < 0 and pos_comp(curpos, endpos) < 0:
-    return True
-  else:
-    return False
+# def in_import(snip):
+#   # Get position using searchpairpos('import (','',')','bnWz')
+#   beginpos = vim.eval("searchpairpos('^import (','','^)','bnWz')")
+#   endpos = vim.eval("searchpairpos('^import','','^)', 'nWz')")
+#   curpos = snip.cursor.to_vim_cursor()
+#   if beginpos == ['0','0'] or endpos == ['0','0']: return False
+#   if pos_comp(beginpos, curpos) < 0 and pos_comp(curpos, endpos) < 0:
+#     return True
+#   else:
+#     return False
 
-def pos_comp(cur1, cur2):
-  # Returns -1 if cur1 is before cur2, +1 if cur1 is after cur2, and 0 if
-  # cur1 == cur2. cur1 and cur2 are lists of the form [row, col].
-  cur1r = int(cur1[0])
-  cur1c = int(cur1[1])
-  cur2r = int(cur2[0])
-  cur2c = int(cur2[1])
-  if cur1r < cur2r: return -1
-  elif cur1r > cur2r: return  1
-  else:
-    if cur1c < cur2c: return -1
-    elif cur1c > cur2c: return  1
-    else: return 0
+# def pos_comp(cur1, cur2):
+#   # Returns -1 if cur1 is before cur2, +1 if cur1 is after cur2, and 0 if
+#   # cur1 == cur2. cur1 and cur2 are lists of the form [row, col].
+#   cur1r = int(cur1[0])
+#   cur1c = int(cur1[1])
+#   cur2r = int(cur2[0])
+#   cur2c = int(cur2[1])
+#   if cur1r < cur2r: return -1
+#   elif cur1r > cur2r: return  1
+#   else:
+#     if cur1c < cur2c: return -1
+#     elif cur1c > cur2c: return  1
+#     else: return 0
 
 endglobal
 
@@ -92,23 +92,23 @@ import "fmt"
 endsnippet
 
 # import
-context "not in_import(snip)"
+# context "not in_import(snip)"
 snippet import "import ( ... )"
 import (
 	"$1"
 )
 endsnippet
 
-context "in_import(snip)"
-snippet "^	\"\S+$" "create next import" r
-`!p snip.rv=match.group(0)`"
-	"${1}
-endsnippet
+# context "in_import(snip)"
+# snippet "^	\"\S+$" "create next import" r
+# `!p snip.rv=match.group(0)`"
+# 	"${1}
+# endsnippet
 
-context "in_import(snip)"
-post_jump "delline_exitimport(snip)"
-snippet "^	\"$" "exit import" r
-endsnippet
+# context "in_import(snip)"
+# post_jump "delline_exitimport(snip)"
+# snippet "^	\"$" "exit import" r
+# endsnippet
 
 # condition-only for loop (i.e., a while loop)
 snippet while "for condition { ... }" b
@@ -119,8 +119,8 @@ endsnippet
 
 # three-part for loop
 snippet fori "for i = 0; i < N; i++ { ... }" b
-for ${1:i} := ${2:0}; ${3:$1} < ${4:N}; ${5:$1++} {
-	${6:${VISUAL}}
+for ${1:i} := ${2:0}; ${3:$1} ${4:<} ${5:N}; ${6:$1++} {
+	${7:${VISUAL}}
 }
 endsnippet
 
@@ -132,7 +132,7 @@ for ${2:index}, ${3:value} := range ${1} {
 endsnippet
 
 # infinite for loop (i.e., while true)
-snippet for "for { ... }" b
+snippet forever "for { ... }" b
 for {
 	$1
 }
@@ -146,7 +146,7 @@ endsnippet
 # main()
 snippet main "func main() { ... }" b
 func main() {
-	${0:${VISUAL}}
+	${1:${VISUAL}}
 }
 endsnippet
 
@@ -156,12 +156,12 @@ endsnippet
 # https://github.com/AlanQuatermain/go-tmbundle
 snippet /^cons/ "constants declaration" r
 const (
-	${1:constant}${2/(.+)/ /}${2:type} = ${0:value}
+	${1:constant}${2/(.+)/ /}${2:type} = ${3:value}
 )
 endsnippet
 
 snippet /^con/ "constant declaration" r
-const ${1:name}${2/(.+)/ /}${2:type} = ${0:value}
+const ${1:name}${2/(.+)/ /}${2:type} = ${3:value}
 endsnippet
 
 snippet iota "iota constant generator" b
@@ -191,14 +191,14 @@ endsnippet
 # define a function
 snippet func "func name(...) [error] { ... }"
 func ${1:name}(${2:params})${3/(.+)/ /}`!p opening_par(snip, 3)`$3`!p closing_par(snip, 3)` {
-	${0:${VISUAL}}
+	${4:${VISUAL}}
 }
 endsnippet
 
 # define a method
 snippet meth "func (self Type) Method(...) [error] { ... }"
 func (${1:receiver} ${2:type}) ${3:name}(${4:params})${5/(.+)/ /}`!p opening_par(snip, 5)`$5`!p closing_par(snip, 5)` {
-	${0:${VISUAL}}
+	${6:${VISUAL}}
 }
 endsnippet
 
@@ -206,7 +206,7 @@ endsnippet
 # (I need a better name here, but this is brief.)
 snippet anon "name := func(...) [error] { ... }"
 ${1:name} := func(${2:params})${3/(.+)/ /}`!p opening_par(snip, 3)`$3`!p closing_par(snip, 3)` {
-	${0:${VISUAL}}
+	${4:${VISUAL}}
 }
 endsnippet
 
@@ -250,6 +250,15 @@ snippet testHelper "func Name(t testing.TB) { ... }"
 func ${1:name}(t testing.TB) {
 	${2:t.Helper()}
 	${3:code}
+}
+endsnippet
+
+# create a map[string]struct of test cases
+snippet testCases "testCases := map[string]struct{ ... }{ ... }"
+${1:testCases} := map[string]struct {
+	${2:field} ${3:type}
+}{
+	${4:message}: {$5:struct},
 }
 endsnippet
 
