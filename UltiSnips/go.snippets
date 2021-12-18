@@ -164,6 +164,12 @@ snippet /^con/ "constant declaration" r
 const ${1:name}${2/(.+)/ /}${2:type} = ${3:value}
 endsnippet
 
+snippet interface "interface declaration" b
+type ${1:name} interface {
+	${2:${VISUAL}}
+}
+endsnippet
+
 snippet iota "iota constant generator" b
 const (
 	${1:constant}${2/(.+)/ /}${2:type} = iota
