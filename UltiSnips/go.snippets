@@ -146,7 +146,7 @@ endsnippet
 # main()
 snippet main "func main() { ... }" b
 func main() {
-	${1:${VISUAL}}
+	$1
 }
 endsnippet
 
@@ -166,7 +166,7 @@ endsnippet
 
 snippet interface "interface declaration" b
 type ${1:name} interface {
-	${2:${VISUAL}}
+	$2
 }
 endsnippet
 
@@ -190,7 +190,7 @@ endsnippet
 
 snippet struct "struct declaration" b
 type ${1:name} struct {
-	${2:${VISUAL}}
+	$2
 }
 endsnippet
 
@@ -226,7 +226,7 @@ endsnippet
 # if with inline error
 snippet ife "if with inline error"
 if err := ${1:condition}; err != nil {
-	${2:${VISUAL}}
+	$2
 }
 endsnippet
 
@@ -240,14 +240,14 @@ endsnippet
 # init()
 snippet init "func init() { ... }" b
 func init() {
-	${1:${VISUAL}}
+	$1
 }
 endsnippet
 
 # test function
 snippet test "func TestXYZ(t *testing.T) { ... }"
 func Test${1:Something}(t *testing.T) {
-	${2:${VISUAL}}
+	$2
 }
 endsnippet
 
@@ -271,7 +271,7 @@ endsnippet
 # call t.Run with an anonymous function
 snippet trun "t.Run(message, func(t *testing.T) { ... })"
 t.Run(${1:"${2:message}"}, func(t *testing.T) {
-	${3:${VISUAL}}
+	$3
 })
 endsnippet
 
@@ -284,7 +284,7 @@ endsnippet
 snippet bench "func BenchmarkXYZ(b *testing.B) { ... }"
 func Benchmark${1:Something}(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		${2:${VISUAL}}
+		$2
 	}
 }
 endsnippet
