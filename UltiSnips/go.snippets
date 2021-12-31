@@ -118,9 +118,16 @@ for ${1:condition}${1/(.+)/ /}{
 endsnippet
 
 # three-part for loop
-snippet fori "for i = 0; i < N; i++ { ... }" b
+snippet fori "for i := 0; i < N; i++ { ... }" b
 for ${1:i} := ${2:0}; ${3:$1} ${4:<} ${5:N}; ${6:$1++} {
 	${7:${VISUAL}}
+}
+endsnippet
+
+# three-part for loop with two variables
+snippet forij "for i,j := 0, N; i < N; i, j = x, y { ... }" b
+for ${1:i}, ${3:j} := ${2:0}, ${4:0}; ${6:$1} ${5:<} ${7:N}; ${8:$1}, ${9:$3} = ${10:$1+1}, ${11:$3-1} {
+	${12:${VISUAL}}
 }
 endsnippet
 
@@ -260,7 +267,7 @@ func ${1:name}(t testing.TB) {
 endsnippet
 
 # create a map[string]struct of test cases
-snippet testCases "testCases := map[string]struct{ ... }{ ... }"
+snippet testCases "testCases := map[string]struct{ ... }{ ... }" b
 ${1:testCases} := map[string]struct {
 	${2:field} ${3:type}
 }{
