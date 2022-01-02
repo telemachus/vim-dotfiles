@@ -317,4 +317,19 @@ if ${1:key}, ok := ${2:map}[${3:value}]; ok {
 }
 endsnippet
 
+# reminder for Go's reference time
+snippet timeref "// 01/02 03:04:05PM '06 -0700" b
+// Reference time: 01/02 03:04:05PM '06 -0700, aka January 2, 15:04:05, 2006
+endsnippet
+
+# ymd for Go's reference time
+snippet ymd "20060202" w
+"20060102"
+endsnippet
+
+# y-m-d for Go's reference time
+snippet y-m-d "2006-01-02" w
+"2006-01-02"
+endsnippet
+
 # vim:ft=snippets:
