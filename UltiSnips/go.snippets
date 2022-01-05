@@ -28,42 +28,42 @@ def closing_par(snip, pos):
 
 # Thanks to https://vi.stackexchange.com/a/26882/7933
 # Endless imports
-def delline_exitimport(snip):
-  cursorline = snip.cursor[0]
-  del snip.buffer[cursorline]
+# def delline_exitimport(snip):
+#   cursorline = snip.cursor[0]
+#   del snip.buffer[cursorline]
 
-  # Add a blank line after import.
-  # NB: cursorline + 1 is the current line number.
-  snip.buffer.append("\n", cursorline+1)
+#   # Add a blank line after import.
+#   # NB: cursorline + 1 is the current line number.
+#   snip.buffer.append("\n", cursorline+1)
 
-  # Place cursor on blank line after import.
-  snip.cursor.set(cursorline+1, 0)
+#   # Place cursor on blank line after import.
+#   snip.cursor.set(cursorline+1, 0)
 
 
-def in_import(snip):
-  # Get position using searchpairpos('import (','',')','bnWz')
-  beginpos = vim.eval("searchpairpos('^import (','','^)','bnWz')")
-  endpos = vim.eval("searchpairpos('^import','','^)', 'nWz')")
-  curpos = snip.cursor.to_vim_cursor()
-  if beginpos == ['0','0'] or endpos == ['0','0']: return False
-  if pos_comp(beginpos, curpos) < 0 and pos_comp(curpos, endpos) < 0:
-    return True
-  else:
-    return False
+# def in_import(snip):
+#   # Get position using searchpairpos('import (','',')','bnWz')
+#   beginpos = vim.eval("searchpairpos('^import (','','^)','bnWz')")
+#   endpos = vim.eval("searchpairpos('^import','','^)', 'nWz')")
+#   curpos = snip.cursor.to_vim_cursor()
+#   if beginpos == ['0','0'] or endpos == ['0','0']: return False
+#   if pos_comp(beginpos, curpos) < 0 and pos_comp(curpos, endpos) < 0:
+#     return True
+#   else:
+#     return False
 
-def pos_comp(cur1, cur2):
-  # Returns -1 if cur1 is before cur2, +1 if cur1 is after cur2, and 0 if
-  # cur1 == cur2. cur1 and cur2 are lists of the form [row, col].
-  cur1r = int(cur1[0])
-  cur1c = int(cur1[1])
-  cur2r = int(cur2[0])
-  cur2c = int(cur2[1])
-  if cur1r < cur2r: return -1
-  elif cur1r > cur2r: return  1
-  else:
-    if cur1c < cur2c: return -1
-    elif cur1c > cur2c: return  1
-    else: return 0
+# def pos_comp(cur1, cur2):
+#   # Returns -1 if cur1 is before cur2, +1 if cur1 is after cur2, and 0 if
+#   # cur1 == cur2. cur1 and cur2 are lists of the form [row, col].
+#   cur1r = int(cur1[0])
+#   cur1c = int(cur1[1])
+#   cur2r = int(cur2[0])
+#   cur2c = int(cur2[1])
+#   if cur1r < cur2r: return -1
+#   elif cur1r > cur2r: return  1
+#   else:
+#     if cur1c < cur2c: return -1
+#     elif cur1c > cur2c: return  1
+#     else: return 0
 
 endglobal
 
@@ -92,23 +92,23 @@ import "fmt"
 endsnippet
 
 # import
-context "not in_import(snip)"
+# context "not in_import(snip)"
 snippet import "import ( ... )"
 import (
 	"$1"
 )
 endsnippet
 
-context "in_import(snip)"
-snippet "^	\"\S+$" "create next import" r
-`!p snip.rv=match.group(0)`"
-	"${1}
-endsnippet
+# context "in_import(snip)"
+# snippet "^	\"\S+$" "create next import" r
+# `!p snip.rv=match.group(0)`"
+# 	"${1}
+# endsnippet
 
-context "in_import(snip)"
-post_jump "delline_exitimport(snip)"
-snippet "^	\"$" "exit import" r
-endsnippet
+# context "in_import(snip)"
+# post_jump "delline_exitimport(snip)"
+# snippet "^	\"$" "exit import" r
+# endsnippet
 
 # condition-only for loop (i.e., a while loop)
 snippet while "for condition { ... }" b
@@ -118,9 +118,16 @@ for ${1:condition}${1/(.+)/ /}{
 endsnippet
 
 # three-part for loop
-snippet fori "for i = 0; i < N; i++ { ... }" b
-for ${1:i} := ${2:0}; ${3:$1} < ${4:N}; ${5:$1++} {
-	${6:${VISUAL}}
+snippet fori "for i := 0; i < N; i++ { ... }" b
+for ${1:i} := ${2:0}; ${3:$1} ${4:<} ${5:N}; ${6:$1++} {
+	${7:${VISUAL}}
+}
+endsnippet
+
+# three-part for loop with two variables
+snippet forij "for i,j := 0, N; i < N; i, j = x, y { ... }" b
+for ${1:i}, ${3:j} := ${2:0}, ${4:0}; ${6:$1} ${5:<} ${7:N}; ${8:$1}, ${9:$3} = ${10:$1+1}, ${11:$3-1} {
+	${12:${VISUAL}}
 }
 endsnippet
 
@@ -132,7 +139,7 @@ for ${2:index}, ${3:value} := range ${1} {
 endsnippet
 
 # infinite for loop (i.e., while true)
-snippet for "for { ... }" b
+snippet forever "for { ... }" b
 for {
 	$1
 }
@@ -146,7 +153,7 @@ endsnippet
 # main()
 snippet main "func main() { ... }" b
 func main() {
-	${0:${VISUAL}}
+	$1
 }
 endsnippet
 
@@ -156,12 +163,18 @@ endsnippet
 # https://github.com/AlanQuatermain/go-tmbundle
 snippet /^cons/ "constants declaration" r
 const (
-	${1:constant}${2/(.+)/ /}${2:type} = ${0:value}
+	${1:constant}${2/(.+)/ /}${2:type} = ${3:value}
 )
 endsnippet
 
 snippet /^con/ "constant declaration" r
-const ${1:name}${2/(.+)/ /}${2:type} = ${0:value}
+const ${1:name}${2/(.+)/ /}${2:type} = ${3:value}
+endsnippet
+
+snippet interface "interface declaration" b
+type ${1:name} interface {
+	$2
+}
 endsnippet
 
 snippet iota "iota constant generator" b
@@ -184,21 +197,21 @@ endsnippet
 
 snippet struct "struct declaration" b
 type ${1:name} struct {
-	${2:${VISUAL}}
+	$2
 }
 endsnippet
 
 # define a function
 snippet func "func name(...) [error] { ... }"
 func ${1:name}(${2:params})${3/(.+)/ /}`!p opening_par(snip, 3)`$3`!p closing_par(snip, 3)` {
-	${0:${VISUAL}}
+	${4:${VISUAL}}
 }
 endsnippet
 
 # define a method
 snippet meth "func (self Type) Method(...) [error] { ... }"
 func (${1:receiver} ${2:type}) ${3:name}(${4:params})${5/(.+)/ /}`!p opening_par(snip, 5)`$5`!p closing_par(snip, 5)` {
-	${0:${VISUAL}}
+	${6:${VISUAL}}
 }
 endsnippet
 
@@ -206,7 +219,7 @@ endsnippet
 # (I need a better name here, but this is brief.)
 snippet anon "name := func(...) [error] { ... }"
 ${1:name} := func(${2:params})${3/(.+)/ /}`!p opening_par(snip, 3)`$3`!p closing_par(snip, 3)` {
-	${0:${VISUAL}}
+	${4:${VISUAL}}
 }
 endsnippet
 
@@ -220,7 +233,7 @@ endsnippet
 # if with inline error
 snippet ife "if with inline error"
 if err := ${1:condition}; err != nil {
-	${2:${VISUAL}}
+	$2
 }
 endsnippet
 
@@ -234,14 +247,14 @@ endsnippet
 # init()
 snippet init "func init() { ... }" b
 func init() {
-	${1:${VISUAL}}
+	$1
 }
 endsnippet
 
 # test function
 snippet test "func TestXYZ(t *testing.T) { ... }"
 func Test${1:Something}(t *testing.T) {
-	${2:${VISUAL}}
+	$2
 }
 endsnippet
 
@@ -253,10 +266,19 @@ func ${1:name}(t testing.TB) {
 }
 endsnippet
 
+# create a map[string]struct of test cases
+snippet testCases "testCases := map[string]struct{ ... }{ ... }" b
+${1:testCases} := map[string]struct {
+	${2:field} ${3:type}
+}{
+	${4:message}: {${5:struct}},
+}
+endsnippet
+
 # call t.Run with an anonymous function
 snippet trun "t.Run(message, func(t *testing.T) { ... })"
 t.Run(${1:"${2:message}"}, func(t *testing.T) {
-	${3:${VISUAL}}
+	$3
 })
 endsnippet
 
@@ -269,7 +291,7 @@ endsnippet
 snippet bench "func BenchmarkXYZ(b *testing.B) { ... }"
 func Benchmark${1:Something}(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		${2:${VISUAL}}
+		$2
 	}
 }
 endsnippet
@@ -293,6 +315,21 @@ snippet ok "if <key>, ok := <map>[<value>]; ok { ... }"
 if ${1:key}, ok := ${2:map}[${3:value}]; ok {
 	${4}
 }
+endsnippet
+
+# reminder for Go's reference time
+snippet timeref "// 01/02 03:04:05PM '06 -0700" b
+// Reference time: 01/02 03:04:05PM '06 -0700, aka January 2, 15:04:05, 2006
+endsnippet
+
+# ymd for Go's reference time
+snippet ymd "20060202" w
+"20060102"
+endsnippet
+
+# y-m-d for Go's reference time
+snippet y-m-d "2006-01-02" w
+"2006-01-02"
 endsnippet
 
 # vim:ft=snippets:
