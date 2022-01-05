@@ -1,15 +1,15 @@
 " Mappings for {neo,}vim and various plugins
-"
-" mapleader
+
 let g:mapleader = ','
-" Quickly remove highlighting
+
+" Quickly remove highlighting.
 nnoremap <silent> <leader><space> :noh<cr>
 
-" Indent pastes properly
+" Indent pastes properly.
 nnoremap <silent> <leader>cp :set paste<cr>"*p`[v`]=:set nopaste<cr><esc>
 nnoremap <silent> <leader>pi p`[v`]=
 
-" Make Y behave like C and D
+" Make Y behave like C and D.
 map Y y$
 
 " Use Q for gq
@@ -23,8 +23,8 @@ vnoremap Q gq
 " nnoremap ' `
 " nnoremap ` '
 
-" Move visual blocks
-" This is neat, but I find it unsettling visually
+" Move visual blocks.
+" This is neat, but I find it unsettling visually.
 " Taken from https://vimrcfu.com/snippet/77
 " vnoremap J :m '>+1<CR>gv=gv
 " vnoremap K :m '<-2<CR>gv=gv
@@ -35,10 +35,10 @@ vnoremap Q gq
 " and :find.
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
-" A mapping for the :w !sudo tee % > /dev/null trick
+" A mapping for the :w !sudo tee % > /dev/null trick.
 cnoremap w!! w !sudo tee % > /dev/null
 
-" From tpope's unimpaired.vim via *Practical Vim*
+" From tpope's unimpaired.vim via *Practical Vim*.
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
@@ -66,25 +66,26 @@ map <silent> <leader>mo <Plug>MacronsOn
 map <silent> <leader>nm <Plug>MacronsOff
 
 " For https://github.com/machakann/vim-sandwich
-nmap s <Nop>
-xmap s <Nop>
+" nmap s <Nop>
+" xmap s <Nop>
 
-" yank the rest of the line or the entire line into the clipboard
+" Yank the rest of the line or the entire line into the clipboard.
 nnoremap <silent> <leader>y "+y$
 nnoremap <silent> <leader>Y :call LineToClipboard()<CR>
 
-" yank visual selection into the clipboard
+" Yank visual selection into the clipboard.
 vnoremap <leader>y "+y
 
-" stop vim-sandwich from stomping on |is| and |as|
+" Stop vim-sandwich from stomping on s (sentence) text objects.
+let g:textobj_sandwich_no_default_key_mappings = 1
 if exists("g:loaded_sandwich")
-    let g:textobj_sandwich_no_default_key_mappings = 1
+    " Use |ib| and |ab| because *b* reminds me of bun.
     xmap ib <Plug>(textobj-sandwich-auto-i)
     omap ib <Plug>(textobj-sandwich-auto-i)
     xmap ab <Plug>(textobj-sandwich-auto-a)
     omap ab <Plug>(textobj-sandwich-auto-a)
 
-    " I never seem to use these.
+    " I never seem to use these, and I want |ic| and |ac| for textobj-curly.
     " xmap iq <Plug>(textobj-sandwich-query-i)
     " omap iq <Plug>(textobj-sandwich-query-i)
     " xmap aq <Plug>(textobj-sandwich-query-a)
