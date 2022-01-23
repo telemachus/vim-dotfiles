@@ -2,12 +2,10 @@
 
 scriptencoding utf-8
 
-if exists('g:loaded_sandwich')
-    let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
+let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
 
-    " Teach vim-sandwich about “foo” and ‘foo’
-    let g:sandwich#recipes += [
-                \ {'buns': ['“', '”'], 'nesting': 0, 'input': ['q"']},
-                \ {'buns': ['‘', '’'], 'nesting': 0, 'input': ["q'"]},
-                \ ]
-endif
+" Teach vim-sandwich about “foo” and ‘foo’.
+let g:sandwich#recipes += [
+            \ {'buns': ['“', '”'], 'nesting': 0, 'input': ['q"']},
+            \ {'buns': ['‘', '’'], 'nesting': 0, 'input': ["q'"]},
+            \ ]
