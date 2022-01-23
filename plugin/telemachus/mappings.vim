@@ -90,3 +90,7 @@ if exists("g:loaded_sandwich")
     " xmap aq <Plug>(textobj-sandwich-query-a)
     " omap aq <Plug>(textobj-sandwich-query-a)
 endif
+
+" Taken from https://stackoverflow.com/a/52481454/26702
+vnoremap <leader>b c<C-R>=trim(system('bitly -stdout -url ' .
+            \ getreg('*'), getreg('"')))<CR><ESC>

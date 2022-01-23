@@ -120,3 +120,10 @@ function! CleanReply()
 endfunction
 
 command! -bar CleanReply :silent call CleanReply()
+
+function! Bitly()
+    let bitlyURL = trim(system("bitly -stdout"))
+    execute "normal! i\<C-r>\<C-r>=bitlyURL\<CR>\<Esc>"
+endfunction
+
+command! -bar Bitly :silent call Bitly()
