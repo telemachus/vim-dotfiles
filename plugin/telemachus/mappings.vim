@@ -78,16 +78,18 @@ vnoremap <leader>y "+y
 
 " Stop vim-sandwich from stomping on s (sentence) text objects.
 let g:textobj_sandwich_no_default_key_mappings = 1
-if exists("g:loaded_sandwich")
-    " Use |ib| and |ab| because *b* reminds me of bun.
-    xmap ib <Plug>(textobj-sandwich-auto-i)
-    omap ib <Plug>(textobj-sandwich-auto-i)
-    xmap ab <Plug>(textobj-sandwich-auto-a)
-    omap ab <Plug>(textobj-sandwich-auto-a)
+" Use |ib| and |ab| because *b* reminds me of bun.
+xmap ib <Plug>(textobj-sandwich-auto-i)
+omap ib <Plug>(textobj-sandwich-auto-i)
+xmap ab <Plug>(textobj-sandwich-auto-a)
+omap ab <Plug>(textobj-sandwich-auto-a)
 
-    " I never seem to use these, and I want |ic| and |ac| for textobj-curly.
-    " xmap iq <Plug>(textobj-sandwich-query-i)
-    " omap iq <Plug>(textobj-sandwich-query-i)
-    " xmap aq <Plug>(textobj-sandwich-query-a)
-    " omap aq <Plug>(textobj-sandwich-query-a)
-endif
+" I never seem to use these, and I want |ic| and |ac| for textobj-curly.
+" xmap iq <Plug>(textobj-sandwich-query-i)
+" omap iq <Plug>(textobj-sandwich-query-i)
+" xmap aq <Plug>(textobj-sandwich-query-a)
+" omap aq <Plug>(textobj-sandwich-query-a)
+
+" Taken from https://stackoverflow.com/a/52481454/26702
+vnoremap <leader>b c<C-R>=trim(system('bitly -stdout -url ' .
+            \ getreg('*'), getreg('"')))<CR><ESC>
