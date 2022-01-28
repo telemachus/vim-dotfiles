@@ -47,4 +47,7 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
 " Use goimport for Fmt in go
-let g:gofmt_command="goimports"
+" let g:gofmt_command="goimports"
+
+" Keep Neoformat quiet
+let g:neoformat_only_msg_on_error = 1
