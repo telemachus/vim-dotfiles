@@ -74,6 +74,9 @@ autocmd vim_config BufNewFile,BufRead /private/**/gopass** setlocal
 " autocmd vim_config FileType mail
 "             \ :call IsReply()
 
-" Neoformat: this requires goimports and gofumpt to be installed.
+" Neoformat for go: this requires goimports and gofumpt to be installed.
 autocmd vim_config BufRead *.go silent Neoformat gofumpt
 autocmd vim_config BufWritePre *.go silent Neoformat goimports
+
+" Neoformat for python: this requires black to be installed.
+autocmd vim_config BufWritePre *.py silent Neoformat black
