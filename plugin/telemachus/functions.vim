@@ -1,3 +1,6 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 function! LineToClipboard()
     let @+ = getline('.')
 endfunction
@@ -9,7 +12,7 @@ endfunction
 "   " nb: there might be a pythonSpaceError in the syntax stack hiding the
 "   " pythonString
 "   let synstack = synstack(line, 1)
-"   let syn = empty(synstack) ? "" : synIDattr(synstack[0], "name")
+"   let syn = empty(synstack) ? '' : synIDattr(synstack[0], 'name')
 "   let in_docstring = syn =~# 'python\(Raw\)\=String'
 "   return in_docstring
 " endfunction
@@ -28,13 +31,13 @@ function! GetPythonTextWidth()
         let comment_text_width = g:python_comment_text_width
     endif
 
-    let cur_syntax = synIDattr(synIDtrans(synID(line("."), col("."), 0)), "name")
-    if cur_syntax == "Comment"
+    let cur_syntax = synIDattr(synIDtrans(synID(line('.'), col('.'), 0)), 'name')
+    if cur_syntax ==# 'Comment'
         return comment_text_width
-    elseif cur_syntax == "String"
+    elseif cur_syntax ==# 'String'
         " Check to see if we're in a docstring
-        let lnum = line(".")
-        while lnum >= 1 && (synIDattr(synIDtrans(synID(lnum, col([lnum, "$"]) - 1, 0)), "name") == "String" || match(getline(lnum), '\v^\s*$') > -1)
+        let lnum = line('.')
+        while lnum >= 1 && (synIDattr(synIDtrans(synID(lnum, col([lnum, '$']) - 1, 0)), 'name') ==# 'String' || match(getline(lnum), '\v^\s*$') > -1)
             if match(getline(lnum), "\\('''\\|\"\"\"\\)") > -1
                 " Assume that any longstring is a docstring
                 return comment_text_width
@@ -63,7 +66,7 @@ endfunction
 
 " \ on Windows unless shellslash is set, / everywhere else.
 function! Slash() abort
-    return !exists("+shellslash") || &shellslash ? '/' : '\'
+    return !exists('+shellslash') || &shellslash ? '/' : '\'
 endfunction
 
 " Backport of fnameescape().
@@ -101,28 +104,31 @@ command! -bar Helptags :call BuildDocs()
 
 function! Reply()
     if line('$') > 1
-        call append(line('$'), ["", ""])
+        call append(line('$'), ['', ''])
         call setpos('.', [0, line('$'), 0, 0])
     endif
 endfunction
 
 command! -bar Reply :silent call Reply()
 
-function! CleanReply()
-    if line('$') > 1
-        :2,$!par w72q
-        " I found these regexes on this site: https://bit.ly/3z8Lf3h.
-        :2,$s/^.\+\ze\n\(>*$\)\@!/\0 /e
-        :2,$s/^>*\zs\s\+$//e
-        call append(line('$'), ["", ""])
-        call setpos('.', [0, line('$'), 0, 0])
-    endif
-endfunction
-
-command! -bar CleanReply :silent call CleanReply()
+" This fails vint for the following reasons:
+"   + Command relies on user settings (Google Style Guide Fragile)
+"   + Command has unintended side effects (Google Style Guide Dangerous)
+" function! CleanReply()
+"     if line('$') > 1
+"         :2,$!par w72q
+"         " I found these regexes on this site: https://bit.ly/3z8Lf3h.
+"         :2,$s/^.\+\ze\n\(>*$\)\@!/\0 /e
+"         :2,$s/^>*\zs\s\+$//e
+"         call append(line('$'), ['', ''])
+"         call setpos('.', [0, line('$'), 0, 0])
+"     endif
+" endfunction
+"
+" command! -bar CleanReply :silent call CleanReply()
 
 function! Bitly()
-    let bitlyURL = trim(system("bitly -stdout"))
+    let bitlyURL = trim(system('bitly -stdout'))
     execute "normal! i\<C-r>\<C-r>=bitlyURL\<CR>\<Esc>"
 endfunction
 
