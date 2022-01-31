@@ -20,13 +20,13 @@ endfunction
 " Taken from Stack Overflow: https://stackoverflow.com/a/4028423/26702
 function! GetPythonTextWidth()
     if !exists('g:python_normal_text_width')
-        let normal_text_width = 79
+        let normal_text_width = 88
     else
         let normal_text_width = g:python_normal_text_width
     endif
 
     if !exists('g:python_comment_text_width')
-        let comment_text_width = 72
+        let comment_text_width = 81
     else
         let comment_text_width = g:python_comment_text_width
     endif
