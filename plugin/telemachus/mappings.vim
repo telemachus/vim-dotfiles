@@ -93,3 +93,17 @@ omap ab <Plug>(textobj-sandwich-auto-a)
 " Taken from https://stackoverflow.com/a/52481454/26702
 vnoremap <Leader>b c<C-R>=trim(system('bitly -stdout -url ' .
             \ getreg('*'), getreg('"')))<CR><ESC>
+
+" Visual select of the last text edited or pasted
+nnoremap gV `[v`]
+
+" Edit and source $MYVIMRC
+nnoremap <Leader>ev :split $MYVIMRC<CR>
+nnoremap <Leader>sv :source $MYVIMRC<CR>
+
+" Make a WORD all uppercase after the fact while in insert mode
+" Suggested by Steve Losh's Learn Vimscript the Hard Way
+inoremap <C-U> <Esc>bgUiWea
+
+" Make WORD under cursor all uppercase while in normal mode
+nnoremap <Leader>u gUiW

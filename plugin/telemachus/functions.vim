@@ -18,6 +18,10 @@ endfunction
 " endfunction
 
 " Taken from Stack Overflow: https://stackoverflow.com/a/4028423/26702
+" Python line lengths: 88 for code and 81 for comments and docstrings.
+" Black uses 88 as the standard line length for lines, and I will go along.
+" The non-code length gives me essentially the same difference between code,
+" comments, and docstrings that PEP8 requires. (PEP8 requires 79 and 72.)
 function! GetPythonTextWidth()
     if !exists('g:python_normal_text_width')
         let normal_text_width = 88

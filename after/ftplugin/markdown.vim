@@ -1,10 +1,9 @@
 scriptencoding utf-8
 " Soft wrap, please
-setlocal textwidth=0
-setlocal wrapmargin=0
-setlocal wrap
-setlocal linebreak
-setlocal nolist
+setlocal cpo+=J
+setlocal textwidth=78
+setlocal colorcolumn=80
+setlocal list
 setlocal formatoptions+=1tqln
 setlocal formatoptions-=r
 setlocal formatoptions-=o
@@ -14,5 +13,4 @@ setlocal tabstop=8
 setlocal shiftwidth=4
 setlocal softtabstop=4
 setlocal expandtab
-setlocal colorcolumn=""
 setlocal spell

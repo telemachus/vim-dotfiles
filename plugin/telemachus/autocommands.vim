@@ -12,19 +12,6 @@ autocmd vim_config BufNewFile,BufNew,BufRead *.h setlocal filetype=c
 autocmd vim_config BufNewFile,BufNew,BufRead *.rockspec
       \ setlocal filetype=lua
 
-" autocmd vim_config InsertCharPre *.md if v:char == '`' | ToggleEducate | endif
-" Thanks to https://github.com/mgedmin/dotvim/blob/master/ftplugin/python.vim#L18-L26
-" autocmd vim_config CursorMoved,CursorMovedI,WinEnter *.md
-"             \ if IsMarkdownCode() |
-"             \     NoEducate |
-"             \ else |
-"             \     Educate |
-"             \ endif
-
-" Have Goyo engage Limelight
-autocmd vim_config User GoyoEnter Limelight
-autocmd vim_config User GoyoLeave Limelight!
-
 " From :help incsearch—I don't understand why this is not the default!
 autocmd vim_config CmdlineEnter /,\? :set hlsearch
 autocmd vim_config CmdlineLeave /,\? :set nohlsearch
@@ -54,13 +41,7 @@ autocmd vim_config CmdlineLeave /,\? :set nohlsearch
           \ && index(split(&eventignore, ','), 'Syntax') != -1 |
           \ unlet! b:current_syntax | endif
 
-" Minimal Zettelkasten
-autocmd vim_config BufNewFile,BufNew,BufRead *.zettelkassten,*.zk
-            \ setlocal filetype=help
-autocmd vim_config BufWritePost,FileWritePost *.zettelkassten,*.zk
-            \ execute "helptags " . expand("%:p:h")
-
-" Python PEP8 line lengths: 79 for code and 72 for comments and docstrings.
+" For Python: use different line lengths for code, comments, and docstrings.
 autocmd vim_config CursorMoved,CursorMovedI * if &ft == 'python' |
             \ :exe 'setlocal textwidth='.GetPythonTextWidth() |
             \ endif
@@ -74,9 +55,17 @@ autocmd vim_config BufNewFile,BufRead /private/**/gopass** setlocal
 " autocmd vim_config FileType mail
 "             \ :call IsReply()
 
+" Neoformat settings {{{
 " Neoformat for go: this requires goimports and gofumpt to be installed.
 autocmd vim_config BufRead *.go silent Neoformat gofumpt
 autocmd vim_config BufWritePre *.go silent Neoformat goimports
+" }}}
 
 " Neoformat for python: this requires black to be installed.
 autocmd vim_config BufWritePre *.py silent Neoformat black
+
+" Use folds in Vimscript files?
+autocmd vim_config FileType vim setlocal foldmethod=marker,foldlevelstart=0
+
+" Let's do two spaces in Markdown files.
+autocmd vim_config BufRead,BufNew *.md setlocal cpo+=J
