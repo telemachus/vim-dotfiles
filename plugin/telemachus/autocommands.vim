@@ -65,7 +65,7 @@ autocmd vim_config BufWritePre *.go silent Neoformat goimports
 autocmd vim_config BufWritePre *.py silent Neoformat black
 
 " Use folds in Vimscript files?
-autocmd vim_config FileType vim setlocal foldmethod=marker,foldlevelstart=0
+autocmd vim_config FileType vim setlocal foldmethod=marker foldlevelstart=0
 
 " Let's do two spaces in Markdown files.
 autocmd vim_config BufRead,BufNew *.md setlocal cpo+=J
