@@ -1,7 +1,5 @@
 " Mappings for {neo,}vim and various plugins
 
-let g:mapleader = ','
-
 " Quickly remove highlighting.
 nnoremap <silent> <Leader><Space> :noh<CR>
 
