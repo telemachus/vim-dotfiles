@@ -62,7 +62,7 @@ autocmd vim_config BufWritePre *.go silent Neoformat goimports
 " }}}
 
 " Neoformat for python: this requires black to be installed.
-" autocmd vim_config BufWritePre *.py silent Neoformat black
+" autocmd vim_config FileType python BufWritePre <buffer> silent Neoformat black
 
 " Use folds in Vimscript files?
 autocmd vim_config FileType vim setlocal foldmethod=marker foldlevelstart=0
