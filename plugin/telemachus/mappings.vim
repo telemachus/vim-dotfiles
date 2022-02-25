@@ -90,7 +90,7 @@ omap ab <Plug>(textobj-sandwich-auto-a)
 
 " Taken from https://stackoverflow.com/a/52481454/26702
 vnoremap <Leader>b c<C-R>=trim(system('bitly -stdout -url ' .
-            \ getreg('*'), getreg('"')))<CR><ESC>
+            \ trim(getreg('*')), getreg('"')))<CR><ESC>
 
 " Visual select of the last text edited or pasted
 nnoremap gV `[v`]
