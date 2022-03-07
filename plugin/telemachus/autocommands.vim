@@ -55,12 +55,6 @@ autocmd vim_config BufNewFile,BufRead /private/**/gopass** setlocal
 " autocmd vim_config FileType mail
 "             \ :call IsReply()
 
-" Neoformat settings {{{
-" Neoformat for go: this requires goimports and gofumpt to be installed.
-autocmd vim_config BufRead *.go silent Neoformat gofumpt
-autocmd vim_config BufWritePre *.go silent Neoformat goimports
-" }}}
-
 " Neoformat for python: this requires black to be installed.
 " autocmd vim_config FileType python BufWritePre <buffer> silent Neoformat black
 
@@ -69,3 +63,12 @@ autocmd vim_config FileType vim setlocal foldmethod=marker foldlevelstart=0
 
 " Let's do two spaces in Markdown files.
 autocmd vim_config BufRead,BufNew *.md setlocal cpo+=J
+
+" Stolen from https://developer.ibm.com/tutorials/l-vim-script-5/
+autocmd vim_config FocusGained * :call HighlightPosition()
+
+" Run goimports before writing .go files.
+autocmd vim_config BufWritePre *.go :silent! call Lint('goimports')
+
+" Automatically open a small location window if lexpr fills it with anything.
+autocmd vim_config QuickFixCmdPost lexpr lwindow 3
