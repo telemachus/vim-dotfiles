@@ -8,7 +8,7 @@ let g:vim_indent_cont = shiftwidth()
 
 " Set python on neovim; disable node, ruby, and perl
 if has('nvim')
-    let g:python3_host_prog = '/usr/local/bin/python3'
+    let g:python3_host_prog = fnamemodify('~/', ':p') . '.pyenv/shims/python'
     let g:loaded_python_provider = 0
     let g:loaded_node_provider = 0
     let g:loaded_ruby_provider = 0
