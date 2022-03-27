@@ -4,7 +4,7 @@
 nnoremap <silent> <Leader><Space> :noh<CR>
 
 " Indent pastes properly.
-nnoremap <silent> <Leader>cp :set paste<cr>"*p`[v`]=:set nopaste<CR><Esc>
+nnoremap <silent> <Leader>cp :set paste<CR>"*p`[v`]=:set nopaste<CR><Esc>
 nnoremap <silent> <Leader>pi p`[v`]=
 
 " Make Y behave like C and D.
@@ -21,11 +21,12 @@ vnoremap Q gq
 " nnoremap ' `
 " nnoremap ` '
 
-" Move visual blocks.
-" This is neat, but I find it unsettling visually.
-" Taken from https://vimrcfu.com/snippet/77
-" vnoremap J :m '>+1<CR>gv=gv
-" vnoremap K :m '<-2<CR>gv=gv
+" Move visual blocks or lines and set proper indentation.
+" I took the first two from https://vimrcfu.com/snippet/77.
+vnoremap = :m '>+1<CR>gv=gv
+vnoremap - :m '<-2<CR>gv=gv
+nnoremap = ddp`[v`]=
+nnoremap - dd2kp`[v`]=
 
 " From Practical Vim (ed. 2, page 101)
 "
@@ -89,7 +90,7 @@ omap ab <Plug>(textobj-sandwich-auto-a)
 " omap aq <Plug>(textobj-sandwich-query-a)
 
 " Taken from https://stackoverflow.com/a/52481454/26702
-vnoremap <Leader>b c<C-R>=trim(system('bitly -stdout -url ' .
+vnoremap <silent> <Leader>b c<C-R>=trim(system('bitly -stdout -url ' .
             \ trim(getreg('*')), getreg('"')))<CR><ESC>
 
 " Visual select of the last text edited or pasted
