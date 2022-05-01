@@ -1,10 +1,6 @@
 " Mappings for {neo,}vim and various plugins
 
-" Quickly remove highlighting.
-nnoremap <silent> <Leader><Space> :noh<CR>
-
 " Indent pastes properly.
-nnoremap <silent> <Leader>cp :set paste<CR>"*p`[v`]=:set nopaste<CR><Esc>
 nnoremap <silent> <Leader>pi p`[v`]=
 
 " Make Y behave like C and D.
@@ -13,20 +9,6 @@ map Y y$
 " Use Q for gq
 nnoremap Q gq
 vnoremap Q gq
-
-" '{mark} jumps to start of line with {mark}.
-" `{mark} goes to the line and column where {mark} is set.
-" I guess I thought I would want the `{mark} behavior more often than '{mark}?
-" Joke is on me: I almost never use marks!
-" nnoremap ' `
-" nnoremap ` '
-
-" Move visual blocks or lines and set proper indentation.
-" I took the first two from https://vimrcfu.com/snippet/77.
-vnoremap = :m '>+1<CR>gv=gv
-vnoremap - :m '<-2<CR>gv=gv
-nnoremap = ddp`[v`]=
-nnoremap - dd2kp`[v`]=
 
 " From Practical Vim (ed. 2, page 101)
 "
@@ -55,18 +37,10 @@ nnoremap <silent> ]q :cnext<CR>
 nnoremap <silent> [Q :cclose<CR>
 nnoremap <silent> ]Q :copen<CR>
 
-" For https://github.com/reedes/vim-textobj-quote
-" map <silent> <Leader>qc <Plug>ReplaceWithCurly
-" map <silent> <Leader>qs <Plug>ReplaceWithStraight
-
 " For https://bitbucket.org/telemachus/vim-macrons
 " map <silent> <Leader>mf <Plug>CharMacronFlip
 " map <silent> <Leader>mo <Plug>MacronsOn
 " map <silent> <Leader>nm <Plug>MacronsOff
-
-" For https://github.com/machakann/vim-sandwich
-" nmap s <Nop>
-" xmap s <Nop>
 
 " Yank the rest of the line or the entire line into the clipboard.
 nnoremap <silent> <Leader>y "+y$
@@ -82,12 +56,6 @@ xmap ib <Plug>(textobj-sandwich-auto-i)
 omap ib <Plug>(textobj-sandwich-auto-i)
 xmap ab <Plug>(textobj-sandwich-auto-a)
 omap ab <Plug>(textobj-sandwich-auto-a)
-
-" I never seem to use these, and I want |ic| and |ac| for textobj-curly.
-" xmap iq <Plug>(textobj-sandwich-query-i)
-" omap iq <Plug>(textobj-sandwich-query-i)
-" xmap aq <Plug>(textobj-sandwich-query-a)
-" omap aq <Plug>(textobj-sandwich-query-a)
 
 " Taken from https://stackoverflow.com/a/52481454/26702
 vnoremap <silent> <Leader>b c<C-R>=trim(system('bitly -stdout -url ' .

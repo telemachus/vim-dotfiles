@@ -187,3 +187,9 @@ function! Lint(cmd) abort
 endfunction
 
 command! -nargs=1 -bar Lint :silent! call Lint(<f-args>)
+
+command! CheckHighlightUnderCursor echo {l,c,n ->
+        \   'hi<'    . synIDattr(synID(l, c, 1), n)             . '> '
+        \  .'trans<' . synIDattr(synID(l, c, 0), n)             . '> '
+        \  .'lo<'    . synIDattr(synIDtrans(synID(l, c, 1)), n) . '> '
+        \ }(line("."), col("."), "name")
