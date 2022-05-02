@@ -61,9 +61,6 @@ omap ab <Plug>(textobj-sandwich-auto-a)
 vnoremap <silent> <Leader>b c<C-R>=trim(system('bitly -stdout -url ' .
             \ trim(getreg('*')), getreg('"')))<CR><ESC>
 
-" Visual select of the last text edited or pasted
-nnoremap gV `[v`]
-
 " Edit and source $MYVIMRC
 nnoremap <Leader>ev :split $MYVIMRC<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
