@@ -2,5 +2,4 @@
 
 ## What?
 
-This is an extension of my dotfiles for {neo,}vim. That's it. That's the
-README.
+These are my dotfiles for vim. That's it. That's the README.
