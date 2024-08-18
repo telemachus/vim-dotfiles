@@ -37,11 +37,6 @@ nnoremap <silent> ]q :cnext<CR>
 nnoremap <silent> [Q :cclose<CR>
 nnoremap <silent> ]Q :copen<CR>
 
-" For https://bitbucket.org/telemachus/vim-macrons
-" map <silent> <Leader>mf <Plug>CharMacronFlip
-" map <silent> <Leader>mo <Plug>MacronsOn
-" map <silent> <Leader>nm <Plug>MacronsOff
-
 " Yank the rest of the line or the entire line into the clipboard.
 nnoremap <silent> <Leader>y "+y$
 nnoremap <silent> <Leader>Y :call LineToClipboard()<CR>
@@ -65,9 +60,8 @@ vnoremap <silent> <Leader>b c<C-R>=trim(system('bitly -stdout -url ' .
 nnoremap <Leader>ev :split $MYVIMRC<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 
-" Make a WORD all uppercase after the fact while in insert mode
-" Suggested by Steve Losh's Learn Vimscript the Hard Way
-inoremap <C-U> <Esc>bgUiWea
-
 " Make WORD under cursor all uppercase while in normal mode
 nnoremap <Leader>u gUiW
+
+" SyntaxAttr.vim
+map -a :call SyntaxAttr#SyntaxAttr()<CR>
