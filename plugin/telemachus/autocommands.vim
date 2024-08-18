@@ -50,17 +50,6 @@ autocmd vim_config CursorMoved,CursorMovedI * if &ft == 'python' |
 autocmd vim_config BufNewFile,BufRead /private/**/gopass** setlocal
             \ noswapfile nobackup noundofile
 
-" Clean up mails
-" On second thought, let’s not do this immediately
-" autocmd vim_config FileType mail
-"             \ :call IsReply()
-
-" Neoformat for python: this requires black to be installed.
-" autocmd vim_config FileType python BufWritePre <buffer> silent Neoformat black
-
-" Use folds in Vimscript files?
-autocmd vim_config FileType vim setlocal foldmethod=marker foldlevelstart=0
-
 " Let's do two spaces in Markdown files.
 autocmd vim_config BufRead,BufNew *.md setlocal cpo+=J
 
