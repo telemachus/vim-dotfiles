@@ -41,10 +41,6 @@ let g:markdown_fenced_languages =
     \ ['html', 'python', 'lua', 'bash=sh', 'tex', 'go', 'c']
 let g:markdown_syntax_conceal = 0
 
-" For https://github.com/SirVer/ultisnips
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
-
-" Keep Neoformat quiet
-let g:neoformat_only_msg_on_error = 1
+" For https://github.com/hrsh7th/vim-vsnip
+let g:vsnip_snippet_dir =
+        \ expand('~/Documents/git-repos/dotfiles/config/nvim/snippets')
