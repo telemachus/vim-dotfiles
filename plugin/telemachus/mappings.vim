@@ -57,8 +57,9 @@ vnoremap <silent> <Leader>b c<C-R>=trim(system('bitly -stdout -url ' .
             \ trim(getreg('*')), getreg('"')))<CR><ESC>
 
 " Edit and source $MYVIMRC
-nnoremap <Leader>ev :split $MYVIMRC<CR>
-nnoremap <Leader>sv :source $MYVIMRC<CR>
+" TODO: Make these commands?
+" nnoremap <Leader>ev :split $MYVIMRC<CR>
+" nnoremap <Leader>sv :source $MYVIMRC<CR>
 
 " Make WORD under cursor all uppercase while in normal mode
 nnoremap <Leader>u gUiW
