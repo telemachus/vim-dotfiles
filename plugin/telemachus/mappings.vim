@@ -66,3 +66,14 @@ nnoremap <Leader>u gUiW
 
 " SyntaxAttr.vim
 map -a :call SyntaxAttr#SyntaxAttr()<CR>
+
+" vim-vsnip: https://github.com/hrsh7th/vim-vsnip
+imap <expr> <Tab> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<Tab>'
+smap <expr> <Tab> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+nmap <Leader>s <Plug>(vsnip-select-text)
+xmap <Leader>s <Plug>(vsnip-select-text)
+nmap <Leader>x <Plug>(vsnip-cut-text)
+xmap <Leader>x <Plug>(vsnip-cut-text)
+
