@@ -1,7 +1,6 @@
 setlocal comments=
 setlocal formatoptions=1tnw
 setlocal textwidth=75
-setlocal colorcolumn=77
 setlocal list
 setlocal lazyredraw
 setlocal spell

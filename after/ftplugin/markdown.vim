@@ -2,7 +2,6 @@ scriptencoding utf-8
 " Soft wrap, please
 setlocal cpo+=J
 setlocal textwidth=78
-setlocal colorcolumn=80
 setlocal list
 setlocal formatoptions+=1tqln
 setlocal formatoptions-=r
