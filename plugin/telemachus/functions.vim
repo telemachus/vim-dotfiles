@@ -66,127 +66,12 @@ function! IsMarkdownCode()
     return is_markdown_code
 endfunction
 
-" These come from Tim Pope’s Pathogen: https://github.com/tpope/vim-pathogen
-
-" \ on Windows unless shellslash is set, / everywhere else.
-function! Slash() abort
-    return !exists('+shellslash') || &shellslash ? '/' : '\'
-endfunction
-
-" Backport of fnameescape().
-function! FnameEscape(string) abort
-    if exists('*fnameescape')
-        return fnameescape(a:string)
-    elseif a:string ==# '-'
-        return '\-'
-    else
-        return substitute(escape(a:string," \t\n*?[{`$\\%#'\"|!<"),'^[+>]','\\&','')
-    endif
-endfunction
-
-" Split a path into a list.
-function! PathSplit(path) abort
-    if type(a:path) == type([]) | return a:path | endif
-    if empty(a:path) | return [] | endif
-    let split = split(a:path,'\\\@<!\%(\\\\\)*\zs,')
-    return map(split,'substitute(v:val,''\\\([\\,]\)'',''\1'',"g")')
-endfunction
-
-" Invoke :helptags on all non-$VIM doc directories in runtimepath.
-function! BuildDocs() abort
-    let sep = Slash()
-    for glob in PathSplit(&runtimepath)
-        for dir in map(split(glob(glob), "\n"), 'v:val.sep."/doc/".sep')
-            if (dir)[0 : strlen($VIMRUNTIME)] !=# $VIMRUNTIME.sep && filewritable(dir) == 2 && !empty(split(glob(dir.'*.txt'))) && (!filereadable(dir.'tags') || filewritable(dir.'tags'))
-                silent! execute 'helptags' FnameEscape(dir)
-            endif
-        endfor
-    endfor
-endfunction
-
-command! -bar Helptags :call BuildDocs()
-
-function! Reply()
-    if line('$') > 1
-        call append(line('$'), ['', ''])
-        call setpos('.', [0, line('$'), 0, 0])
-    endif
-endfunction
-
-command! -bar Reply :silent call Reply()
-
-" This fails vint for the following reasons:
-"   + Command relies on user settings (Google Style Guide Fragile)
-"   + Command has unintended side effects (Google Style Guide Dangerous)
-" function! CleanReply()
-"     if line('$') > 1
-"         :2,$!par w72q
-"         " I found these regexes on this site: https://bit.ly/3z8Lf3h.
-"         :2,$s/^.\+\ze\n\(>*$\)\@!/\0 /e
-"         :2,$s/^>*\zs\s\+$//e
-"         call append(line('$'), ['', ''])
-"         call setpos('.', [0, line('$'), 0, 0])
-"     endif
-" endfunction
-"
-" command! -bar CleanReply :silent call CleanReply()
-
-function! Bitly()
-    let bitlyURL = trim(system('bitly -stdout'))
-    execute "normal! i\<C-r>\<C-r>=bitlyURL\<CR>\<Esc>"
-endfunction
-
-command! -bar Bitly :silent call Bitly()
-
 function! HighlightPosition() abort
     set cursorline
     redraw
     sleep 1
     set nocursorline
 endfunction
-
-function! s:strip_newlines(str)
-    return substitute(a:str, '\v^\n*(.{-})\n*$', '\1', '')
-endfunction
-
-function! Lint(cmd) abort
-    " Inspired by vim-filetype-formatter and vim-go:
-    " https://github.com/pappasam/vim-filetype-formatter
-    " https://github.com/fatih/vim-go
-
-    let stdin = join(getline(1, '$'), "\n")
-    let results_raw = system(a:cmd, stdin)
-    let results = s:strip_newlines(results_raw)
-
-    " Return early if there was an error.
-    if v:shell_error != 0
-        let results = substitute(results, '<standard input>', expand('%'), 'g')
-        let title = expand(a:cmd) . ' ' . expand('%')
-        lexpr results
-        call setloclist(0, [], 'a', {'title' : title})
-        return
-    endif
-
-    lexpr []
-    let tempfile = tempname()
-    call writefile(split(results, "\n"), tempfile)
-    let line_offset = len(readfile(tempfile)) - line('$')
-    let line_number = line('.') + line_offset
-    let original_column = col('.')
-    let original_line = getline('.')
-    let tempundofile = tempname()
-    execute 'wundo! ' . tempundofile
-    call system('chmod --reference=' . expand('%') . ' '
-            \ . shellescape(tempfile))
-    call rename(tempfile, expand('%'))
-    silent edit!
-    silent! execute 'rundo ' . tempundofile
-    call delete(tempundofile)
-    call cursor(line_number, original_column +
-            \ (len(getline(line_number)) - len(original_line)))
-endfunction
-
-command! -nargs=1 -bar Lint :silent! call Lint(<f-args>)
 
 command! CheckHighlightUnderCursor echo {l,c,n ->
         \   'hi<'    . synIDattr(synID(l, c, 1), n)             . '> '
