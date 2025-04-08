@@ -6,13 +6,16 @@ augroup vim_config
     autocmd!
 augroup END
 
+" Run :helptags ALL every time that I start vim.
+autocmd vim_config VimEnter * :helptags ALL
+
 " My header files are C, not C++
 autocmd vim_config BufNewFile,BufNew,BufRead *.h setlocal filetype=c
 
 autocmd vim_config BufNewFile,BufNew,BufRead *.rockspec
       \ setlocal filetype=lua
 
-" From :help incsearch—I don't understand why this is not the default!
+" From :help incsearch. (This should be the default.)
 autocmd vim_config CmdlineEnter /,\? :set hlsearch
 autocmd vim_config CmdlineLeave /,\? :set nohlsearch
 
