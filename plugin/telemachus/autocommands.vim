@@ -6,10 +6,6 @@ augroup vim_config
     autocmd!
 augroup END
 
-" Run `:helptags ALL` every time that I start vim.
-" Comment out for now since I can do this in headless-plug.vim.
-autocmd vim_config VimEnter * :helptags ALL
-
 " My header files are C, not C++
 autocmd vim_config BufNewFile,BufNew,BufRead *.h setlocal filetype=c
 
