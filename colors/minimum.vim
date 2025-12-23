@@ -92,7 +92,7 @@ endif
 hi Normal guifg=#090909 guibg=#ffffff gui=NONE cterm=NONE
 hi ColorColumn guifg=NONE guibg=#f0f1f3 gui=NONE cterm=NONE
 hi Conceal guifg=NONE guibg=NONE gui=NONE ctermfg=NONE ctermbg=NONE cterm=NONE
-hi Cursor guifg=NONE guibg=NONE gui=reverse ctermfg=NONE ctermbg=NONE cterm=reverse
+hi Cursor guifg=white guibg=#111111 ctermfg=NONE ctermbg=NONE cterm=reverse
 hi Directory guifg=NONE guibg=NONE gui=bold ctermfg=NONE ctermbg=NONE cterm=bold
 hi DiffAdd guifg=#194a1f guibg=#aaffc3 gui=NONE cterm=NONE
 hi DiffChange guifg=#808000 guibg=#fffac8 gui=NONE cterm=NONE
