@@ -23,7 +23,5 @@ let g:markdown_fenced_languages =
     \ ['html', 'python', 'lua', 'bash=sh', 'tex', 'go', 'c']
 let g:markdown_syntax_conceal = 0
 
-" For https://github.com/hrsh7th/vim-vsnip
-let g:vsnip_extra_mapping = v:false
-let g:vsnip_snippet_dir =
-        \ expand('~/Documents/git-repos/dotfiles/config/nvim/snippets')
+" For https://github.com/telemachus/vim-snippy
+let g:snippy_snippet_dirs = ['~/.config/nvim/snippets']

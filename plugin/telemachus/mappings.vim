@@ -52,10 +52,6 @@ omap ib <Plug>(textobj-sandwich-auto-i)
 xmap ab <Plug>(textobj-sandwich-auto-a)
 omap ab <Plug>(textobj-sandwich-auto-a)
 
-" Taken from https://stackoverflow.com/a/52481454/26702
-vnoremap <silent> <Leader>b c<C-R>=trim(system('bitly -stdout -url ' .
-            \ trim(getreg('*')), getreg('"')))<CR><ESC>
-
 " Edit and source $MYVIMRC
 " TODO: Make these commands?
 " nnoremap <Leader>ev :split $MYVIMRC<CR>
@@ -67,13 +63,14 @@ nnoremap <Leader>u gUiW
 " SyntaxAttr.vim
 map -a :call SyntaxAttr#SyntaxAttr()<CR>
 
-" vim-vsnip: https://github.com/hrsh7th/vim-vsnip
-imap <expr> <Tab> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<Tab>'
-smap <expr> <Tab> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-nmap <Leader>s <Plug>(vsnip-select-text)
-xmap <Leader>s <Plug>(vsnip-select-text)
-nmap <Leader>x <Plug>(vsnip-cut-text)
-xmap <Leader>x <Plug>(vsnip-cut-text)
-
+" vim-snippy: https://github.com/telemachus/vim-snippy
+imap <expr> <Tab> snippy#can_expand_or_advance() ?
+    \ '<Plug>(snippy-expand-or-advance)' : '<Tab>'
+smap <expr> <Tab> snippy#can_expand_or_advance() ?
+    \ '<Plug>(snippy-expand-or-advance)' : '<Tab>'
+imap <expr> <S-Tab> snippy#can_jump(-1) ? '<Plug>(snippy-previous)' : '<S-Tab>'
+smap <expr> <S-Tab> snippy#can_jump(-1) ? '<Plug>(snippy-previous)' : '<S-Tab>'
+xmap <Leader>x <Plug>(snippy-cut-text)
+nmap <Leader>x <Plug>(snippy-cut-text)
+nmap <Leader>s <Plug>(snippy-select-text)
+xmap <Leader>s <Plug>(snippy-select-text)
