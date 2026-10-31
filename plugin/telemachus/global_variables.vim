@@ -25,3 +25,16 @@ let g:markdown_syntax_conceal = 0
 
 " For https://github.com/telemachus/vim-snippy
 let g:snippy_snippet_dirs = ['~/.config/nvim/snippets']
+
+" For https://github.com/telemachus/conform.vim
+let g:conform_formatters_by_ft = {
+    \ 'go': ['goimports', 'gofumpt'],
+    \ 'json': ['jq'],
+    \ 'lua': ['stylua'],
+    \ 'python': ['isort', 'black'],
+    \ 'sh': ['shfmt'],
+    \ }
+let g:conform_formatters = {
+    \ 'jq': {'args': ['--indent', '4']},
+    \ 'shfmt': {'prepend_args': ['-ci', '-s', '-i', '4']},
+    \ }

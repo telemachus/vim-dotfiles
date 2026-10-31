@@ -56,8 +56,8 @@ autocmd vim_config BufRead,BufNew *.md setlocal cpo+=J
 " Stolen from https://developer.ibm.com/tutorials/l-vim-script-5/
 autocmd vim_config FocusGained * :call HighlightPosition()
 
-" Run goimports before writing .go files.
-autocmd vim_config BufWritePre *.go :silent! call Lint('goimports')
+" Format before writing with https://github.com/telemachus/conform.vim.
+autocmd vim_config BufWritePre * call conform#format()
 
 " Automatically open a small location window if lexpr fills it with anything.
 autocmd vim_config QuickFixCmdPost lexpr lwindow 3
