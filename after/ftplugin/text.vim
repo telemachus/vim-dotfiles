@@ -1,4 +1,4 @@
-" Soft wrap, please
+scriptencoding utf-8
 setlocal textwidth=80
 setlocal list
 setlocal formatoptions=1tn

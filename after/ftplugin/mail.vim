@@ -1,3 +1,4 @@
+scriptencoding utf-8
 setlocal comments=
 setlocal formatoptions=1tnw
 setlocal textwidth=75
