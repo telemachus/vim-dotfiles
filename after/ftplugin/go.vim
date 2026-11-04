@@ -1,4 +1,5 @@
 set formatprg=
+setlocal tags+=~/.cache/tags/go-stdlib
 
 " Function text objects (if, af) for vim-textobj-function.
 let b:textobj_function_select = function('textobj#function#indent#select',
